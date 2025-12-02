@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skilled Worker Salary Checker</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+  h1 { margin-bottom: .25rem; }
+  .panel { background:#fafafa; padding:1.25rem; border:1px solid #ddd; border-radius:8px; margin-bottom:1.75rem; }
+  label { font-weight:600; display:block; margin-top:.75rem; }
+  input, select { width:100%; max-width:420px; padding:.45rem; border:1px solid #bbb; border-radius:5px; margin-top:.25rem; }
+  button { margin-top:1rem; padding:.75rem 1.25rem; border:none; border-radius:5px; background:#0043a4; color:#fff; cursor:pointer; font-size:1rem; }
+  button:hover { background:#00347e; }
+  .info { background:#f2f7fc; border-left:4px solid #0043a4; padding:.75rem 1rem; margin-top:1rem; border-radius:4px; font-size:.9rem; }
+  .result { padding:1rem; border-radius:8px; margin-top:1rem; }
+  .ok { background:#eaf8ef; border:1px solid #1c7d3a; }
+  .fail { background:#fdecee; border:1px solid #b62334; }
+  .small { font-size:.85rem; color:#666; }
+</style>
+</head>
+
+<body>
+
+<h1>Skilled Worker Salary Checker</h1>
+<p class="small">This tool gives an indicative comparison against Skilled Worker visa salary rules. Always verify figures on GOV.UK and seek legal advice for immigration decisions.</p>
+
+<!-- 1. OCCUPATION -->
+<div class="panel">
+  <h2>1. Find the occupation</h2>
+
+  <label>Search job title or SOC code</label>
+  <input id="searchJob" type="text" placeholder="e.g. nurse, engineer, 2231…">
+
+  <label>Select SOC code</label>
+  <select id="socSelect">
+    <option>Loading SOC codes…</option>
+  </select>
+
+  <div id="jobInfo" class="small"></div>
+
+  <div class="info">
+    <strong>About SOC codes</strong><br>
+    Standard Occupational Classification (SOC) codes group jobs by their main duties. 
+    For Skilled Worker applications, the SOC code must accurately reflect the role being sponsored. 
+    Titles may differ between employers, so match based on duties rather than job title alone.
+  </div>
+</div>
+
+<!-- 2. HOURS & SALARY -->
+<div class="panel">
+  <h2>2. Hours & salary</h2>
+
+  <label>Weekly hours</label>
+  <input id="hours" type="number" value="37.5" min="1" step="0.1">
+
+  <label>Proposed annual salary (£)</label>
+  <input id="salary" type="number" step="100">
+
+  <div class="info">
+    <strong>Salary rules</strong><br>
+    Skilled Worker salaries must meet the higher of:
+    <ul>
+      <li>the general salary threshold</li>
+      <li>the “going rate” for the occupation</li>
+      <li>the minimum hourly rate calculated from contracted hours</li>
+    </ul>
+    Only guaranteed basic pay and guaranteed allowances can be counted.  
+    Bonuses or non-guaranteed payments cannot be included.
+  </div>
+</div>
+
+<!-- 3. SCENARIO -->
+<div class="panel">
+  <h2>3. Scenario</h2>
+
+  <label>
+    <input type="radio" name="scenario" value="standard" checked>
+    Standard rate
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="newEntrant">
+    New entrant rate
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="phdNonStem">
+    PhD (non-STEM)
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="phdStem">
+    PhD (STEM)
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="isl">
+    Immigration Salary List (ISL)
+  </label>
+
+  <div class="info">
+    <strong>Understanding salary discounts</strong><br>
+    Certain applicants may rely on a lower salary threshold:
+    <ul>
+      <li><strong>New entrants</strong>: limited to max 4 years across all routes.</li>
+      <li><strong>PhD discounts</strong>: apply only where the qualification is eligible.</li>
+      <li><strong>ISL roles</strong>: have reduced salary thresholds but must appear on the list.</li>
+    </ul>
+    From 22 July 2025, most occupations require RQF 6 (degree-level) roles and higher thresholds.
+  </div>
+</div>
+
+<!-- 4. CALCULATE -->
+<div class="panel">
+  <h2>4. Check salary</h2>
+
+  <button id="checkBtn">Check salary</button>
+  <div id="results"></div>
+
+  <div class="info">
+    <strong>Important</strong><br>
+    This calculator gives an indicative comparison only.  
+    Eligibility depends on full Skilled Worker rules, including:
+    <ul>
+      <li>occupation skill level</li>
+      <li>contracted hours</li>
+      <li>hourly rate meeting minimum requirements</li>
+      <li>applicant eligibility for discounts</li>
+      <li>updated salary thresholds</li>
+    </ul>
+    Always verify numbers with official guidance.
+  </div>
+</div>
+
+<script>
+let socData = [];
+
+// ---------------- CSV LOADER ----------------
+async function loadCSV() {
+  const text = await fetch("soc_full_for_calculator.csv").then(r => r.text());
+  const rows = text.trim().split("\n");
+  const headers = rows.shift().split(",");
+
+  socData = rows.map(row => {
+    const cols = row.split(",");
+    let obj = {};
+    headers.forEach((h, i) => obj[h] = cols[i]);
+    return obj;
+  });
+
+  populateDropdown(socData);
+}
+
+// ---------------- POPULATE DROPDOWN ----------------
+function populateDropdown(list) {
+  const select = document.getElementById("socSelect");
+  select.innerHTML = "";
+  list.forEach(r => {
+    const opt = document.createElement("option");
+    opt.value = r.SOC_Code;
+    opt.textContent = `${r.SOC_Code} — ${r.Job_Title}`;
+    select.appendChild(opt);
+  });
+}
+
+// ---------------- SEARCH ----------------
+document.getElementById("searchJob").addEventListener("input", function () {
+  const q = this.value.toLowerCase();
+  const filtered = socData.filter(r =>
+    r.SOC_Code.includes(q) ||
+    r.Job_Title.toLowerCase().includes(q)
+  );
+  populateDropdown(filtered);
+});
+
+// ---------------- CHECK SALARY ----------------
+document.getElementById("checkBtn").addEventListener("click", function () {
+  const soc = document.getElementById("socSelect").value;
+  const role = socData.find(r => r.SOC_Code === soc);
+
+  if (!role) return alert("Select an occupation.");
+
+  const hours = parseFloat(document.getElementById("hours").value);
+  const offered = parseFloat(document.getElementById("salary").value);
+  const scenario = document.querySelector("input[name='scenario']:checked").value;
+
+  if (!offered) return alert("Enter a salary.");
+
+  let min = parseFloat(role.Standard_Annual);
+
+  if (scenario === "newEntrant" || scenario === "isl") {
+    min = parseFloat(role.Lower_Annual);
+  }
+  if (scenario === "phdNonStem") min *= 0.9;
+  if (scenario === "phdStem") min *= 0.8;
+
+  const results = document.getElementById("results");
+  results.innerHTML = "";
+
+  const div = document.createElement("div");
+  div.classList.add("result");
+
+  if (offered >= min) {
+    div.classList.add("ok");
+    div.innerHTML = `<strong>Eligible</strong><br>Minimum required: £${min.toLocaleString()}`;
+  } else {
+    div.classList.add("fail");
+    div.innerHTML = `<strong>Not eligible</strong><br>Minimum required: £${min.toLocaleString()}`;
+  }
+
+  results.appendChild(div);
+});
+
+loadCSV();
+</script>
+
+</body>
+</html>
