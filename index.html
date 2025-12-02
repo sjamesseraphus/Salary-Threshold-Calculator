@@ -24,7 +24,10 @@
 <body>
 
 <h1>Skilled Worker Salary Checker</h1>
-<p class="small">This tool gives an indicative comparison against Skilled Worker visa salary rules. Always verify figures on GOV.UK and seek legal advice for immigration decisions.</p>
+<p class="small">
+  This tool gives an indicative comparison against Skilled Worker visa salary rules.
+  Always verify figures on GOV.UK and seek legal advice for immigration decisions.
+</p>
 
 <!-- 1. OCCUPATION -->
 <div class="panel">
@@ -42,7 +45,9 @@
 
   <div class="info">
     <strong>About SOC codes</strong><br>
-    SOC codes classify jobs based on the main duties. For Skilled Worker visas, the code must reflect the role being sponsored. Match duties, not job titles.
+    Standard Occupational Classification (SOC) codes group jobs by their main duties.
+    For Skilled Worker applications, the SOC code must accurately reflect the role being sponsored.
+    Titles may differ between employers, so match based on duties rather than job title alone.
   </div>
 </div>
 
@@ -58,11 +63,14 @@
 
   <div class="info">
     <strong>Salary rules</strong><br>
-    Skilled Worker salaries must meet the highest of:<br>
-    • General salary threshold<br>
-    • Occupation-specific salary ("going rate")<br>
-    • Minimum hourly requirement based on contracted hours<br><br>
-    Only guaranteed earnings count toward the salary.
+    Skilled Worker salaries must meet the higher of:
+    <ul>
+      <li>the general salary threshold</li>
+      <li>the “going rate” for the occupation</li>
+      <li>the minimum hourly rate calculated from contracted hours</li>
+    </ul>
+    Only guaranteed basic pay and guaranteed allowances can be counted.
+    Bonuses or non-guaranteed payments cannot be included.
   </div>
 </div>
 
@@ -70,16 +78,36 @@
 <div class="panel">
   <h2>3. Scenario</h2>
 
-  <label><input type="radio" name="scenario" value="standard" checked> Standard rate</label>
-  <label><input type="radio" name="scenario" value="newEntrant"> New entrant rate</label>
-  <label><input type="radio" name="scenario" value="phdNonStem"> PhD (non-STEM)</label>
-  <label><input type="radio" name="scenario" value="phdStem"> PhD (STEM)</label>
-  <label><input type="radio" name="scenario" value="isl"> Immigration Salary List (ISL)</label>
+  <label>
+    <input type="radio" name="scenario" value="standard" checked>
+    Standard rate
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="newEntrant">
+    New entrant rate
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="phdNonStem">
+    PhD (non-STEM)
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="phdStem">
+    PhD (STEM)
+  </label>
+  <label>
+    <input type="radio" name="scenario" value="isl">
+    Immigration Salary List (ISL)
+  </label>
 
   <div class="info">
     <strong>Understanding salary discounts</strong><br>
-    Lower salary thresholds apply only for specific applicant categories.  
-    New entrant and PhD rates apply only where eligibility criteria are met.
+    Certain applicants may rely on a lower salary threshold:
+    <ul>
+      <li><strong>New entrants</strong>: limited to max 4 years across all routes.</li>
+      <li><strong>PhD discounts</strong>: apply only where the qualification is eligible.</li>
+      <li><strong>ISL roles</strong>: have reduced salary thresholds but must appear on the list.</li>
+    </ul>
+    From 22 July 2025, most occupations require RQF 6 (degree-level) roles and higher thresholds.
   </div>
 </div>
 
@@ -92,7 +120,16 @@
 
   <div class="info">
     <strong>Important</strong><br>
-    This calculator provides an indicative threshold comparison only. Always verify with updated Immigration Rules.
+    This calculator gives an indicative comparison only.
+    Eligibility depends on full Skilled Worker rules, including:
+    <ul>
+      <li>occupation skill level</li>
+      <li>contracted hours</li>
+      <li>hourly rate meeting minimum requirements</li>
+      <li>applicant eligibility for discounts</li>
+      <li>updated salary thresholds</li>
+    </ul>
+    Always verify numbers with official guidance.
   </div>
 </div>
 
@@ -108,7 +145,11 @@ async function loadCSV() {
   socData = rows.map(row => {
     const cols = row.split(",");
     let obj = {};
-    headers.forEach((h, i) => obj[h] = cols[i]);
+    headers.forEach((h, i) => {
+      const key = h.trim();
+      const val = cols[i] ? cols[i].trim() : "";
+      obj[key] = val;
+    });
     return obj;
   });
 
@@ -122,28 +163,53 @@ function populateDropdown(list) {
   list.forEach(r => {
     const opt = document.createElement("option");
 
-    // Your real CSV fields
-    opt.value = r.soc;
-    opt.textContent = `${r.soc} — ${r.title}`;
+    // matches your CSV headers exactly:
+    // SOC_code, Job_type, Related_job_titles, Standard_going_rate_annual, Lower_going_rate_annual
+    opt.value = r.SOC_code;
+    opt.textContent = `${r.SOC_code} — ${r.Job_type}`;
 
     select.appendChild(opt);
   });
+
+  // also update the little info text for the first item
+  updateJobInfo();
 }
+
+// ---------------- UPDATE JOB INFO ----------------
+function updateJobInfo() {
+  const select = document.getElementById("socSelect");
+  const soc = select.value;
+  const role = socData.find(r => r.SOC_code === soc);
+  const infoDiv = document.getElementById("jobInfo");
+
+  if (!role) {
+    infoDiv.textContent = "";
+    return;
+  }
+
+  infoDiv.textContent =
+    `Standard annual going rate: £${Number(role.Standard_going_rate_annual).toLocaleString()}  ` +
+    `(lower rate: £${Number(role.Lower_going_rate_annual).toLocaleString()}).`;
+}
+
+// update info when user changes the dropdown
+document.getElementById("socSelect").addEventListener("change", updateJobInfo);
 
 // ---------------- SEARCH ----------------
 document.getElementById("searchJob").addEventListener("input", function () {
   const q = this.value.toLowerCase();
   const filtered = socData.filter(r =>
-    r.soc.includes(q) ||
-    r.title.toLowerCase().includes(q)
+    (r.SOC_code || "").includes(q) ||
+    (r.Job_type || "").toLowerCase().includes(q) ||
+    (r.Related_job_titles || "").toLowerCase().includes(q)
   );
   populateDropdown(filtered);
 });
 
-// ---------------- SALARY CHECK ----------------
+// ---------------- CHECK SALARY ----------------
 document.getElementById("checkBtn").addEventListener("click", function () {
   const soc = document.getElementById("socSelect").value;
-  const role = socData.find(r => r.soc === soc);
+  const role = socData.find(r => r.SOC_code === soc);
 
   if (!role) return alert("Select an occupation.");
 
@@ -153,15 +219,22 @@ document.getElementById("checkBtn").addEventListener("click", function () {
 
   if (!offered) return alert("Enter a salary.");
 
-  // Base minimum from CSV
-  let min = parseFloat(role.minimumSalary);
+  let standard = parseFloat(role.Standard_going_rate_annual);
+  let lower = parseFloat(role.Lower_going_rate_annual);
 
-  // Apply scenario adjustments (these are configurable)
+  if (isNaN(standard)) standard = 0;
+  if (isNaN(lower)) lower = standard;
+
+  // base on standard rate by default
+  let min = standard;
+
+  // use lower rate for new entrant / ISL
   if (scenario === "newEntrant" || scenario === "isl") {
-    min = min * 0.7; // TEMPORARY unless you specify real values
+    min = lower;
   }
-  if (scenario === "phdNonStem") min *= 0.9;
-  if (scenario === "phdStem") min *= 0.8;
+  // PhD discounts
+  if (scenario === "phdNonStem") min = standard * 0.9;
+  if (scenario === "phdStem") min = standard * 0.8;
 
   const results = document.getElementById("results");
   results.innerHTML = "";
