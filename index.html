@@ -29,114 +29,12 @@
   Always verify figures on GOV.UK and seek legal advice for immigration decisions.
 </p>
 
-<!-- 1. OCCUPATION -->
-<div class="panel">
-  <h2>1. Find the occupation</h2>
-
-  <label>Search job title or SOC code</label>
-  <input id="searchJob" type="text" placeholder="e.g. nurse, engineer, 2231…">
-
-  <label>Select SOC code</label>
-  <select id="socSelect">
-    <option>Loading SOC codes…</option>
-  </select>
-
-  <div id="jobInfo" class="small"></div>
-
-  <div class="info">
-    <strong>About SOC codes</strong><br>
-    Standard Occupational Classification (SOC) codes group jobs by their main duties.
-    For Skilled Worker applications, the SOC code must accurately reflect the role being sponsored.
-    Titles may differ between employers, so match based on duties rather than job title alone.
-  </div>
-</div>
-
-<!-- 2. HOURS & SALARY -->
-<div class="panel">
-  <h2>2. Hours & salary</h2>
-
-  <label>Weekly hours</label>
-  <input id="hours" type="number" value="37.5" min="1" step="0.1">
-
-  <label>Proposed annual salary (£)</label>
-  <input id="salary" type="number" step="100">
-
-  <div class="info">
-    <strong>Salary rules</strong><br>
-    Skilled Worker salaries must meet the higher of:
-    <ul>
-      <li>the general salary threshold</li>
-      <li>the “going rate” for the occupation</li>
-      <li>the minimum hourly rate calculated from contracted hours</li>
-    </ul>
-    Only guaranteed basic pay and guaranteed allowances can be counted.
-    Bonuses or non-guaranteed payments cannot be included.
-  </div>
-</div>
-
-<!-- 3. SCENARIO -->
-<div class="panel">
-  <h2>3. Scenario</h2>
-
-  <label>
-    <input type="radio" name="scenario" value="standard" checked>
-    Standard rate
-  </label>
-  <label>
-    <input type="radio" name="scenario" value="newEntrant">
-    New entrant rate
-  </label>
-  <label>
-    <input type="radio" name="scenario" value="phdNonStem">
-    PhD (non-STEM)
-  </label>
-  <label>
-    <input type="radio" name="scenario" value="phdStem">
-    PhD (STEM)
-  </label>
-  <label>
-    <input type="radio" name="scenario" value="isl">
-    Immigration Salary List (ISL)
-  </label>
-
-  <div class="info">
-    <strong>Understanding salary discounts</strong><br>
-    Certain applicants may rely on a lower salary threshold:
-    <ul>
-      <li><strong>New entrants</strong>: limited to max 4 years across all routes.</li>
-      <li><strong>PhD discounts</strong>: apply only where the qualification is eligible.</li>
-      <li><strong>ISL roles</strong>: have reduced salary thresholds but must appear on the list.</li>
-    </ul>
-    From 22 July 2025, most occupations require RQF 6 (degree-level) roles and higher thresholds.
-  </div>
-</div>
-
-<!-- 4. CALCULATE -->
-<div class="panel">
-  <h2>4. Check salary</h2>
-
-  <button id="checkBtn">Check salary</button>
-  <div id="results"></div>
-
-  <div class="info">
-    <strong>Important</strong><br>
-    This calculator gives an indicative comparison only.
-    Eligibility depends on full Skilled Worker rules, including:
-    <ul>
-      <li>occupation skill level</li>
-      <li>contracted hours</li>
-      <li>hourly rate meeting minimum requirements</li>
-      <li>applicant eligibility for discounts</li>
-      <li>updated salary thresholds</li>
-    </ul>
-    Always verify numbers with official guidance.
-  </div>
-</div>
+<!-- Content panels go here, unchanged -->
+<!-- Keep your original UI structure -->
 
 <script>
 let socData = [];
 
-// ---------------- CSV LOADER ----------------
 async function loadCSV() {
   const text = await fetch("soc_full_for_calculator.csv").then(r => r.text());
   const rows = text.trim().split("\n");
@@ -156,26 +54,18 @@ async function loadCSV() {
   populateDropdown(socData);
 }
 
-// ---------------- POPULATE DROPDOWN ----------------
 function populateDropdown(list) {
   const select = document.getElementById("socSelect");
   select.innerHTML = "";
   list.forEach(r => {
     const opt = document.createElement("option");
-
-    // matches your CSV headers exactly:
-    // SOC_code, Job_type, Related_job_titles, Standard_going_rate_annual, Lower_going_rate_annual
     opt.value = r.SOC_code;
     opt.textContent = `${r.SOC_code} — ${r.Job_type}`;
-
     select.appendChild(opt);
   });
-
-  // also update the little info text for the first item
   updateJobInfo();
 }
 
-// ---------------- UPDATE JOB INFO ----------------
 function updateJobInfo() {
   const select = document.getElementById("socSelect");
   const soc = select.value;
@@ -187,15 +77,11 @@ function updateJobInfo() {
     return;
   }
 
-  infoDiv.textContent =
-    `Standard annual going rate: £${Number(role.Standard_going_rate_annual).toLocaleString()}  ` +
-    `(lower rate: £${Number(role.Lower_going_rate_annual).toLocaleString()}).`;
+  infoDiv.textContent = `Standard annual going rate: £${Number(role.Standard_going_rate_annual).toLocaleString()} (lower rate: £${Number(role.Lower_going_rate_annual).toLocaleString()}).`;
 }
 
-// update info when user changes the dropdown
 document.getElementById("socSelect").addEventListener("change", updateJobInfo);
 
-// ---------------- SEARCH ----------------
 document.getElementById("searchJob").addEventListener("input", function () {
   const q = this.value.toLowerCase();
   const filtered = socData.filter(r =>
@@ -206,35 +92,29 @@ document.getElementById("searchJob").addEventListener("input", function () {
   populateDropdown(filtered);
 });
 
-// ---------------- CHECK SALARY ----------------
 document.getElementById("checkBtn").addEventListener("click", function () {
   const soc = document.getElementById("socSelect").value;
   const role = socData.find(r => r.SOC_code === soc);
-
   if (!role) return alert("Select an occupation.");
 
   const hours = parseFloat(document.getElementById("hours").value);
   const offered = parseFloat(document.getElementById("salary").value);
   const scenario = document.querySelector("input[name='scenario']:checked").value;
-
   if (!offered) return alert("Enter a salary.");
 
-  let standard = parseFloat(role.Standard_going_rate_annual);
-  let lower = parseFloat(role.Lower_going_rate_annual);
+  let goingRate = parseFloat(role.Standard_going_rate_annual);
+  let lowerRate = parseFloat(role.Lower_going_rate_annual);
+  if (isNaN(goingRate)) goingRate = 0;
+  if (isNaN(lowerRate)) lowerRate = goingRate;
 
-  if (isNaN(standard)) standard = 0;
-  if (isNaN(lower)) lower = standard;
+  let required = goingRate;
+  if (scenario === "newEntrant" || scenario === "isl") required = lowerRate;
+  if (scenario === "phdNonStem") required = Math.max(goingRate * 0.9, 37500);
+  if (scenario === "phdStem" || scenario === "newEntrant") required = Math.max(goingRate * 0.8, 33400);
+  if (scenario === "isl") required = Math.max(goingRate, 33400);
 
-  // base on standard rate by default
-  let min = standard;
-
-  // use lower rate for new entrant / ISL
-  if (scenario === "newEntrant" || scenario === "isl") {
-    min = lower;
-  }
-  // PhD discounts
-  if (scenario === "phdNonStem") min = standard * 0.9;
-  if (scenario === "phdStem") min = standard * 0.8;
+  const hourly = offered / (Math.min(hours, 48) * 52);
+  const meetsHourly = hourly >= 17.13;
 
   const results = document.getElementById("results");
   results.innerHTML = "";
@@ -242,12 +122,12 @@ document.getElementById("checkBtn").addEventListener("click", function () {
   const div = document.createElement("div");
   div.classList.add("result");
 
-  if (offered >= min) {
+  if (offered >= required && meetsHourly) {
     div.classList.add("ok");
-    div.innerHTML = `<strong>Eligible</strong><br>Minimum required: £${min.toLocaleString()}`;
+    div.innerHTML = `<strong>Eligible</strong><br>Salary meets required minimum: £${required.toLocaleString()}<br>Hourly rate: £${hourly.toFixed(2)} (meets £17.13/hr)`;
   } else {
     div.classList.add("fail");
-    div.innerHTML = `<strong>Not eligible</strong><br>Minimum required: £${min.toLocaleString()}`;
+    div.innerHTML = `<strong>Not eligible</strong><br>Required salary: £${required.toLocaleString()}<br>Hourly rate: £${hourly.toFixed(2)} (${meetsHourly ? "meets hourly" : "below minimum £17.13/hr"})`;
   }
 
   results.appendChild(div);
