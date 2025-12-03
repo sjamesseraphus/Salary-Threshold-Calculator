@@ -29,7 +29,6 @@
   Always verify figures on GOV.UK and seek legal advice for immigration decisions.
 </p>
 
-<!-- 1. OCCUPATION -->
 <div class="panel">
   <h2>1. Find the occupation</h2>
 
@@ -49,7 +48,6 @@
   </div>
 </div>
 
-<!-- 2. HOURS & SALARY -->
 <div class="panel">
   <h2>2. Hours & salary</h2>
 
@@ -66,7 +64,6 @@
   </div>
 </div>
 
-<!-- 3. SCENARIO -->
 <div class="panel">
   <h2>3. Scenario</h2>
 
@@ -82,7 +79,6 @@
   </div>
 </div>
 
-<!-- 4. CALCULATE -->
 <div class="panel">
   <h2>4. Check salary</h2>
 
@@ -95,20 +91,18 @@
 </div>
 
 <script>
-  // ===== CONSTANTS (current Skilled Worker rules) =====
-  const GENERAL_THRESHOLD   = 41700; // standard general threshold
-  const FLOOR_NEW_ENTRANT   = 33400; // floor for new entrant / PhD STEM / ISL general
-  const FLOOR_PHD_NON_STEM  = 37500; // floor for PhD non-STEM
-  const HOURLY_MIN          = 17.13; // minimum hourly rate (standard route)
+  const GENERAL_THRESHOLD   = 41700;
+  const FLOOR_NEW_ENTRANT   = 33400;
+  const FLOOR_PHD_NON_STEM  = 37500;
+  const HOURLY_MIN          = 17.13;
   const WEEKS_PER_YEAR      = 52;
   const MAX_HOURS_FOR_TEST  = 48;
 
   let socData = [];
 
-  // ===== CSV LOADER =====
   async function loadCSV() {
     try {
-      const response = await fetch("soc_full_for_calculator.csv");
+      const response = await fetch("2_soc_full_for_calculator.csv?nocache=" + Date.now());
       const text = await response.text();
 
       const rows = text.trim().split("\n");
@@ -117,13 +111,8 @@
       socData = rows.map(row => {
         const cols = row.split(",");
         const obj = {};
-        headers.forEach((h, i) => {
-          const key = h.trim();
-          const val = cols[i] ? cols[i].trim() : "";
-          obj[key] = val;
-        });
+        headers.forEach((h, i) => obj[h.trim()] = cols[i]?.trim() || "");
 
-        // normalise job title field so either CSV shape works
         if (!obj.Job_title && obj.Job_type) obj.Job_title = obj.Job_type;
         if (!obj.Job_type && obj.Job_title) obj.Job_type = obj.Job_title;
 
@@ -132,141 +121,89 @@
 
       populateDropdown(socData);
     } catch (err) {
-      console.error("Error loading CSV:", err);
-      alert("There was a problem loading the SOC data.");
+      console.error("CSV load failed:", err);
+      alert("CSV failed to load.");
     }
   }
 
-  // ===== POPULATE DROPDOWN =====
   function populateDropdown(list) {
     const select = document.getElementById("socSelect");
     select.innerHTML = "";
 
     list.forEach(r => {
       const opt = document.createElement("option");
-      const title = r.Job_title || r.Job_type || "Unknown title";
       opt.value = r.SOC_code;
-      opt.textContent = `${r.SOC_code} — ${title}`;
+      opt.textContent = `${r.SOC_code} — ${r.Job_title || "Unknown"}`;
       select.appendChild(opt);
     });
 
     updateJobInfo();
   }
 
-  // ===== UPDATE JOB INFO =====
   function updateJobInfo() {
-    const select = document.getElementById("socSelect");
-    const soc = select.value;
+    const soc = document.getElementById("socSelect").value;
     const role = socData.find(r => r.SOC_code === soc);
     const infoDiv = document.getElementById("jobInfo");
 
-    if (!role) {
-      infoDiv.textContent = "";
-      return;
-    }
+    if (!role) return (infoDiv.textContent = "");
 
     const standard = Number(role.Standard_going_rate_annual) || 0;
     const lower    = Number(role.Lower_going_rate_annual) || 0;
 
     infoDiv.textContent =
       `Standard annual going rate: £${standard.toLocaleString()} ` +
-      (lower ? `(lower rate column: £${lower.toLocaleString()})` : "");
+      (lower ? `(lower rate: £${lower.toLocaleString()})` : "");
   }
 
-  // ===== SEARCH =====
   document.getElementById("searchJob").addEventListener("input", function () {
     const q = this.value.toLowerCase();
-    const filtered = socData.filter(r => {
-      const title = (r.Job_title || r.Job_type || "").toLowerCase();
-      const related = (r.Related_job_titles || "").toLowerCase();
-      return (
-        (r.SOC_code || "").toLowerCase().includes(q) ||
-        title.includes(q) ||
-        related.includes(q)
-      );
-    });
+    const filtered = socData.filter(r =>
+      (r.SOC_code || "").toLowerCase().includes(q) ||
+      (r.Job_title || "").toLowerCase().includes(q) ||
+      (r.Related_job_titles || "").toLowerCase().includes(q)
+    );
     populateDropdown(filtered.length ? filtered : socData);
   });
 
-  // update info when dropdown changes
   document.getElementById("socSelect").addEventListener("change", updateJobInfo);
 
-  // ===== MAIN CHECK =====
   document.getElementById("checkBtn").addEventListener("click", function () {
     const soc = document.getElementById("socSelect").value;
     const role = socData.find(r => r.SOC_code === soc);
-
-    if (!role) {
-      alert("Select an occupation.");
-      return;
-    }
-
-    const offered  = parseFloat(document.getElementById("salary").value);
-    const hoursRaw = parseFloat(document.getElementById("hours").value);
-
-    if (!offered || !hoursRaw || hoursRaw <= 0) {
-      alert("Enter weekly hours and an annual salary.");
-      return;
-    }
-
-    const hours    = Math.min(hoursRaw, MAX_HOURS_FOR_TEST);
+    const offered = Number(document.getElementById("salary").value);
+    const hours = Math.min(Number(document.getElementById("hours").value), MAX_HOURS_FOR_TEST);
     const scenario = document.querySelector("input[name='scenario']:checked").value;
+
+    if (!role || !offered || !hours) return alert("Enter all values.");
 
     const goingRate = Number(role.Standard_going_rate_annual) || 0;
 
-    // --- 1. Compute required annual salary based on scenario ---
-    let required = 0;
+    let required = scenario === "standard" ? Math.max(GENERAL_THRESHOLD, goingRate)
+      : scenario === "newEntrant" ? Math.max(goingRate * 0.7, FLOOR_NEW_ENTRANT)
+      : scenario === "phdNonStem" ? Math.max(goingRate * 0.9, FLOOR_PHD_NON_STEM)
+      : scenario === "phdStem" ? Math.max(goingRate * 0.8, FLOOR_NEW_ENTRANT)
+      : Math.max(goingRate, FLOOR_NEW_ENTRANT);
 
-    if (scenario === "standard") {
-      required = Math.max(GENERAL_THRESHOLD, goingRate);
-    } else if (scenario === "newEntrant") {
-      required = Math.max(goingRate * 0.7, FLOOR_NEW_ENTRANT);
-    } else if (scenario === "phdNonStem") {
-      required = Math.max(goingRate * 0.9, FLOOR_PHD_NON_STEM);
-    } else if (scenario === "phdStem") {
-      required = Math.max(goingRate * 0.8, FLOOR_NEW_ENTRANT);
-    } else if (scenario === "isl") {
-      // ISL: discount on general threshold only, still 100% of going rate
-      required = Math.max(goingRate, FLOOR_NEW_ENTRANT);
-    }
-
-    // --- 2. Hourly rate test (cap at 48h) ---
     const offeredHourly = offered / (hours * WEEKS_PER_YEAR);
-    const meetsHourly   = offeredHourly >= HOURLY_MIN;
+    const meetsHourly = offeredHourly >= HOURLY_MIN;
 
-    // --- 3. Build result message ---
     const results = document.getElementById("results");
     results.innerHTML = "";
 
     const div = document.createElement("div");
-    div.classList.add("result");
+    div.className = "result " + ((offered >= required && meetsHourly) ? "ok" : "fail");
 
-    if (offered >= required && meetsHourly) {
-      div.classList.add("ok");
-      div.innerHTML =
-        `<strong>Likely to meet salary rules (subject to full eligibility).</strong><br>` +
-        `Required minimum salary for this scenario: £${required.toLocaleString()}<br>` +
-        `Your offer: £${offered.toLocaleString()} (~£${offeredHourly.toFixed(2)}/hour).`;
-    } else {
-      div.classList.add("fail");
-      const reasons = [];
-      if (offered < required) {
-        reasons.push(`Annual salary is below the required minimum of £${required.toLocaleString()}.`);
-      }
-      if (!meetsHourly) {
-        reasons.push(`Hourly rate (~£${offeredHourly.toFixed(2)}/hour) is below £${HOURLY_MIN.toFixed(2)}/hour.`);
-      }
-      div.innerHTML =
-        `<strong>Does not meet Skilled Worker salary rules for this scenario.</strong><br>` +
-        reasons.join(" ");
-    }
+    div.innerHTML =
+      offered >= required && meetsHourly
+        ? `<strong>Meets salary rules.</strong><br>Required: £${required.toLocaleString()}<br>Offer: £${offered.toLocaleString()} (~£${offeredHourly.toFixed(2)}/hr)`
+        : `<strong>Does not meet salary rules.</strong>`;
 
     results.appendChild(div);
   });
 
-  // ===== START =====
   loadCSV();
 </script>
 
 </body>
 </html>
+
