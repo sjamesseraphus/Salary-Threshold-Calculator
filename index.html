@@ -136,4 +136,37 @@ document.getElementById("checkBtn").addEventListener("click", function(){
 
   const offered = parseFloat(document.getElementById("salary").value);
   const hours = Math.min(parseFloat(document.getElementById("hours").value),48);
-  const sce
+const scenario = document.querySelector("input[name='scenario']:checked").value;
+
+let goingRate = Number(role.Standard_going_rate_annual);
+let min = Math.max(GENERAL_THRESHOLD, goingRate);
+
+if(scenario==="newEntrant") min = Math.max(goingRate*0.7, FLOOR_NEW_ENTRANT);
+if(scenario==="phdNonStem") min = Math.max(goingRate*0.9, FLOOR_PHD_NON_STEM);
+if(scenario==="phdStem") min = Math.max(goingRate*0.8, FLOOR_NEW_ENTRANT);
+if(scenario==="isl") min = Math.max(goingRate, FLOOR_NEW_ENTRANT);
+
+const hourly = offered / (hours * 52);
+const hourlyOK = hourly >= HOURLY_MIN;
+
+const div = document.createElement("div");
+div.className = "result";
+document.getElementById("results").innerHTML = "";
+
+if(offered >= min && hourlyOK){
+  div.classList.add("ok");
+  div.innerHTML = `<strong>Eligible</strong><br>Required: £${min.toLocaleString()}<br>Hourly: £${hourly.toFixed(2)}`;
+} else {
+  div.classList.add("fail");
+  div.innerHTML = `<strong>Not Eligible</strong><br>Required: £${min.toLocaleString()}<br>Hourly: £${hourly.toFixed(2)}`;
+}
+
+document.getElementById("results").appendChild(div);
+});
+
+loadCSV();
+</script>
+
+</body>
+</html>
+
