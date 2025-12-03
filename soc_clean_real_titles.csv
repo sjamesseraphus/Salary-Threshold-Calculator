@@ -1,0 +1,963 @@
+SOC_code,Job_title,Standard_going_rate_annual,Lower_going_rate_annual
+1111,Chairpersons,88100.0,60000
+1111,Chief Executives,88100.0,60000
+1111,Diplomats And Foreign Office Officials,88100.0,60000
+1111,Senior Public Service Officials,88100.0,60000
+1111,Chief Executives And Senior Officials,88100.0,60000
+1121,Production Managers And Directors In Manufacturing,55000.0,40000
+1122,Production Managers And Directors In Construction,53400.0,41400
+1123,Managers And Directors In The Extraction Of Fossil Fuels,54000.0,47100
+1123,Managers And Directors In The Production Of Energy,54000.0,47100
+1123,Production Managers And Directors In Mining And Energy,54000.0,47100
+1131,"Bank, Building Society And Post Office Managers",75100.0,49700
+1131,Company Secretaries And Finance Managers And Directors,75100.0,49700
+1131,Investment Bankers And Directors,75100.0,49700
+1131,Financial Managers And Directors,75100.0,49700
+1132,Advertising And Marketing Directors,87300.0,60000
+1132,Sales Directors,87300.0,60000
+1132,"Marketing, Sales And Advertising Directors",87300.0,60000
+1133,Public Relations And Communications Directors,77200.0,59700
+1134,Estimating Managers And Directors,54700.0,42500
+1134,Procurement And Purchasing Managers And Directors,54700.0,42500
+1134,Purchasing Managers And Directors,54700.0,42500
+1135,Charitable Organisation Managers And Directors,44300.0,35900
+1136,Employee Relations Managers,52900.0,41200
+1136,"Equality, Diversity And Inclusion Managers",52900.0,41200
+1136,Learning And Development Managers And Directors,52900.0,41200
+1136,Recruitment Managers And Directors,52900.0,41200
+1136,Human Resources Managers And Directors,52900.0,41200
+1137,Information Security Directors,86000.0,61200
+1137,Information Technology Operations Directors,86000.0,61200
+1137,Information Technology Programme Managers And Directors,86000.0,61200
+1137,Information Technology Technical Directors,86000.0,61200
+1137,Information Technology Directors,86000.0,61200
+1139,Accounts Directors,74700.0,52300
+1139,Administration Directors,74700.0,52300
+1139,Complaints And Customer Service Directors,74700.0,52300
+1139,Events Directors,74700.0,52300
+1139,Intellectual Property Managers And Directors,74700.0,52300
+1139,Municipal Clerks,74700.0,52300
+1139,Research And Development (R&D) Directors,74700.0,52300
+1139,Functional Managers And Directors,74700.0,52300
+1140,Supply Chain Directors,81400.0,53600
+1140,"Directors In Logistics, Warehousing And Transport",81400.0,53600
+1150,Managers And Directors In Retail And Wholesale,36400.0,29400
+1162,"Chief, Deputy Chief And Assistant Chief Constables",64000.0,60800
+1162,Chief Inspectors,64000.0,60800
+1162,Chief Superintendents,64000.0,60800
+1162,Senior Police Officers,64000.0,60800
+1163,Senior Officers In Ambulance Services,61600.0,50000
+1163,Senior Officers In Fire Services,61600.0,50000
+1163,Senior Officers In Immigration Services,61600.0,50000
+1163,Senior Officers In Prison Services,61600.0,50000
+1163,Senior Officers In Revenue And Customs,61600.0,50000
+1171,Clinical Governance And Information Managers,50300.0,41600
+1171,Healthcare Service Managers And Directors,50300.0,41600
+1171,Health Services And Public Health Managers And Directors,50300.0,41600
+1172,Social Services Managers And Directors,43000.0,33100
+1211,Managers And Proprietors In Agriculture And Horticulture,35900.0,29100
+1212,Cattery And Kennel Managers And Proprietors,33400.0,25800
+1212,Fisheries Managers And Proprietors,33400.0,25800
+1212,Forestry Managers,33400.0,25800
+1212,Livery Yard And Stud Farm Managers And Proprietors,33400.0,25800
+1212,Racehorse Trainers,33400.0,25800
+1212,"Managers And Proprietors In Forestry, Fishing And Related Services",33400.0,25800
+1221,Hotel And Accommodation Managers And Proprietors,38300.0,29800
+1222,Café And Restaurant Managers And Proprietors,33400.0,26100
+1222,Catering Operations Managers,33400.0,26100
+1222,Takeaway Managers And Proprietors,33400.0,26100
+1222,Restaurant And Catering Establishment Managers And Proprietors,33400.0,26100
+1223,Publicans And Managers Of Licensed Premises,36300.0,30900
+1224,Cinema Managers And Proprietors,34100.0,26600
+1224,Golf Course Managers,34100.0,26600
+1224,"Gym, Fitness And Leisure Services Managers And Proprietors",34100.0,26600
+1224,Marina Managers,34100.0,26600
+1224,Museum Managers And Proprietors,34100.0,26600
+1224,Parks And Gardens Managers,34100.0,26600
+1224,Theatre Managers (Excludes Hospital Service),34100.0,26600
+1224,Leisure And Sports Managers And Proprietors,34100.0,26600
+1225,Travel Agency Managers And Proprietors,36000.0,30000
+1231,Dental Practice Managers,40400.0,32600
+1231,Medical Practice Managers,40400.0,32600
+1231,Opticians Managers,40400.0,32600
+1231,Veterinary Practice Managers,40400.0,32600
+1231,Health Care Practice Managers,40400.0,32600
+1232,Day Care Managers,40400.0,32000
+1232,Home Care Managers,40400.0,32000
+1232,Residential Care Managers And Proprietors,40400.0,32000
+1232,"Residential, Day And Domiciliary Care Managers And Proprietors",40400.0,32000
+1233,Early Education And Childcare Services Proprietors,33400.0,25000
+1241,Airport Managers,44900.0,35200
+1241,Depot And Fleet Managers,44900.0,35200
+1241,Dispatch And Distribution Managers,44900.0,35200
+1241,Harbour And Port Managers,44900.0,35200
+1241,Road Traffic Managers,44900.0,35200
+1241,Managers In Transport And Distribution,44900.0,35200
+1242,Managers In Storage And Warehousing,35100.0,29100
+1243,Managers In Logistics,44900.0,37300
+1251,Facilities Managers,42600.0,32500
+1251,"Landlords, Property And Housing Managers",42600.0,32500
+1251,Property Investors And Developers,42600.0,32500
+1251,Sales And Lettings Managers,42600.0,32500
+1251,Shopping Centre Managers,42600.0,32500
+1251,"Property, Housing And Estate Managers",42600.0,32500
+1252,Garage Managers And Proprietors,45600.0,36300
+1253,Beauty Salon Managers And Proprietors,33400.0,27000
+1253,Hairdressing Managers And Proprietors,33400.0,27000
+1253,Hairdressing And Beauty Salon Managers And Proprietors,33400.0,27000
+1254,Landfill Site Managers,48300.0,39700
+1254,Recycling Managers,48300.0,39700
+1254,Scrap Yard Managers,48300.0,39700
+1254,Sewage Works And Water Treatment Managers,48300.0,39700
+1254,Waste Disposal And Environmental Services Managers,48300.0,39700
+1255,Art Gallery Managers And Directors,44900.0,37000
+1255,Film And Television Production Managers,44900.0,37000
+1255,Publishing Managers And Directors,44900.0,37000
+1255,Radio Production Managers,44900.0,37000
+1255,Sport And Talent Agents,44900.0,37000
+1255,Theatre Production Managers,44900.0,37000
+1255,Managers And Directors In The Creative Industries,44900.0,37000
+1256,Betting Shop Managers,33400.0,27100
+1256,Bingo Hall Managers,33400.0,27100
+1256,Casino Managers,33400.0,27100
+1256,Betting Shop And Gambling Establishment Managers,33400.0,27100
+1257,Hire Services Managers And Proprietors,33400.0,28200
+1258,Design Consultancy Directors,70100.0,44600
+1258,Environmental Consultancy Directors,70100.0,44600
+1258,Management Consultancy Directors,70100.0,44600
+1258,Surveying Consultancy Directors,70100.0,44600
+1258,Directors In Consultancy Services,70100.0,44600
+1259,Cleaning And Hygiene Services Managers And Proprietors,41400.0,33100
+1259,Educational Establishment Managers And Proprietors,41400.0,33100
+1259,Funeral Services And Crematorium Managers And Proprietors,41400.0,33100
+1259,Library Managers,41400.0,33100
+1259,Recruitment Agency Managers And Proprietors,41400.0,33100
+1259,Security Services Managers And Proprietors,41400.0,33100
+1259,Managers And Proprietors In Other Services,41400.0,33100
+2111,Analytical Chemists,39900.0,31300
+2111,Industrial Chemists,39900.0,31300
+2111,Nuclear And Radiochemists,39900.0,31300
+2111,Research And Development Chemists,39900.0,31300
+2111,Chemical Scientists,39900.0,31300
+2112,Agricultural Scientists,40300.0,30700
+2112,Biologists,40300.0,30700
+2112,Botanical And Horticultural Scientists,40300.0,30700
+2112,Microbiologists And Bacteriologists,40300.0,30700
+2112,Pathologists,40300.0,30700
+2112,Pharmacologists,40300.0,30700
+2112,Zoological Scientists,40300.0,30700
+2112,Biological Scientists,40300.0,30700
+2113,Biochemists,45900.0,35100
+2113,Biomedical Scientists,45900.0,35100
+2113,Biotechnologists,45900.0,35100
+2113,Clinical Scientists,45900.0,35100
+2113,Biochemists And Biomedical Scientists,45900.0,35100
+2114,Geologists,54600.0,41500
+2114,Geophysicists,54600.0,41500
+2114,Hydrogeologists And Hydrologists,54600.0,41500
+2114,Meteorologists,54600.0,41500
+2114,Physical Scientists,54600.0,41500
+2115,Anthropologists,40400.0,28000
+2115,Archaeologists,40400.0,28000
+2115,Behavioural Scientists,40400.0,28000
+2115,Epidemiologists,40400.0,28000
+2115,Genealogists,40400.0,28000
+2115,Geographic Information Systems (Gis) Analysts,40400.0,28000
+2115,Historians,40400.0,28000
+2115,Political Scientists,40400.0,28000
+2115,Public Health Analysts,40400.0,28000
+2115,Social And Humanities Scientists,40400.0,28000
+2119,Sports Scientists,41500.0,33700
+2119,Natural And Social Science Professionals,41500.0,33700
+2121,Building And Building Services Engineers,50400.0,39200
+2121,Geotechnical Engineers,50400.0,39200
+2121,Mining Engineers,50400.0,39200
+2121,Structural Engineers,50400.0,39200
+2121,Transportation Engineers,50400.0,39200
+2121,Water Engineers (Professional),50400.0,39200
+2121,Civil Engineers,50400.0,39200
+2122,Automotive Engineers (Professional),46800.0,38400
+2122,Marine Engineers And Naval Architects,46800.0,38400
+2122,Mechanical Design Engineers,46800.0,38400
+2122,Mechanical Engineers,46800.0,38400
+2123,Laser Engineers,58700.0,47100
+2123,Power Systems Engineers,58700.0,47100
+2123,Railway Signalling Engineers,58700.0,47100
+2123,Electrical Engineers,58700.0,47100
+2124,Broadcast Engineers (Professional),52000.0,41200
+2124,Telecommunications Engineers (Professional),52000.0,41200
+2124,Electronics Engineers,52000.0,41200
+2125,Chemical Engineers,45000.0,36500
+2125,Control And Instrumentation Engineers,45000.0,36500
+2125,Industrial And Production Engineers,45000.0,36500
+2125,Production And Process Engineers,45000.0,36500
+2126,Aeronautical Engineers (Professional),52400.0,43400
+2126,Aircraft Engineers (Professional),52400.0,43400
+2126,Avionics Engineers,52400.0,43400
+2126,Aerospace Engineers,52400.0,43400
+2127,Engineering Project Managers And Project Engineers,51900.0,40600
+2129,Acoustic Engineers,46100.0,37500
+2129,Biomedical Engineers,46100.0,37500
+2129,Brewers (Qualified),46100.0,37500
+2129,Clinical Engineers,46100.0,37500
+2129,Energy Engineers,46100.0,37500
+2129,Food Technologists,46100.0,37500
+2129,Gas Engineers (Professional),46100.0,37500
+2129,Heating And Ventilating Engineers (Professional),46100.0,37500
+2129,Materials Engineers,46100.0,37500
+2129,Mechatronic Engineers,46100.0,37500
+2129,Nuclear Engineers,46100.0,37500
+2129,Patent Engineers,46100.0,37500
+2129,Robotics Engineers,46100.0,37500
+2129,Traffic Engineers,46100.0,37500
+2129,Engineering Professionals,46100.0,37500
+2131,It Project Managers,58200.0,42600
+2132,It Information Managers,55000.0,43000
+2132,It Product Managers,55000.0,43000
+2132,It Service Delivery Managers,55000.0,43000
+2132,It Systems Managers,55000.0,43000
+2132,It Test Managers,55000.0,43000
+2132,Network Managers,55000.0,43000
+2132,Software Development Managers,55000.0,43000
+2132,Technical Support Managers,55000.0,43000
+2132,It Managers,55000.0,43000
+2133,Computer Analysts And Scientists,54900.0,42400
+2133,Data Architects,54900.0,42400
+2133,Data Engineers,54900.0,42400
+2133,It Systems Architects,54900.0,42400
+2133,It Business Analysts,54900.0,42400
+2133,It Solutions Architects And Designers,54900.0,42400
+2133,"It Business Analysts, Architects And Systems Designers",54900.0,42400
+2134,Computer Games Designers,54700.0,40000
+2134,Computer Programmers,54700.0,40000
+2134,Software Developers,54700.0,40000
+2134,Programmers And Software Development Professionals,54700.0,40000
+2135,Cyber Operational Defence Specialists,48500.0,35300
+2135,Cyber Security Management And Governance Specialists,48500.0,35300
+2135,Forensic Computer Specialists,48500.0,35300
+2135,Secure System Development Specialists,48500.0,35300
+2135,Cyber Security Professionals,48500.0,35300
+2136,It Quality And Testing Professionals,41200.0,34500
+2137,It Network Professionals,45600.0,38100
+2139,Devops Engineers,52300.0,38700
+2139,It Consultants,52300.0,38700
+2139,Webmasters And Website Managers,52300.0,38700
+2139,Information Technology Professionals,52300.0,38700
+2141,Application Designers,43800.0,31300
+2141,Ui And Ux Designers And Researchers,43800.0,31300
+2141,Web Designers,43800.0,31300
+2141,Web Design Professionals,43800.0,31300
+2142,Multimedia Animators,33400.0,26200
+2142,Graphic And Multimedia Designers,33400.0,26200
+2151,Conservationists,36000.0,29800
+2151,Ecologists,36000.0,29800
+2151,Heritage Officers,36000.0,29800
+2151,Conservation Professionals,36000.0,29800
+2152,Energy Managers,37200.0,31400
+2152,Environmental And Geo-Environmental Engineers,37200.0,31400
+2152,Environmental Consultants,37200.0,31400
+2152,Environmental Scientists,37200.0,31400
+2152,Sustainability Officers,37200.0,31400
+2152,Environmental Professionals,37200.0,31400
+2161,Laboratory Managers,54400.0,40000
+2161,Research And Development (R&D) Design Managers,54400.0,40000
+2161,Research And Development (R&D) Managers,54400.0,40000
+2162,"Other Researchers, Unspecified Discipline",43600.0,37400
+2240,Veterinarians,49500.0,38000
+2311,Higher Education Teaching Professionals,52600.0,40600
+2317,Teachers Of English As A Foreign Language,36200.0,30100
+2319,Adult Education Tutors,33400.0,27100
+2319,Dance And Drama School Principals And Owners,33400.0,27100
+2319,Private Music And Singing Teachers,33400.0,27100
+2319,Private Tutors,33400.0,27100
+2319,Teaching Professionals,33400.0,27100
+2322,Education Managers,43900.0,34900
+2323,Educational Advisers,42200.0,35700
+2323,School Inspectors,42200.0,35700
+2324,Early Education And Childcare Services Managers,33400.0,25000
+2329,Bursars,40600.0,30000
+2329,Educational Administrators,40600.0,30000
+2329,Examiners And Markers,40600.0,30000
+2329,Other Educational Professionals,40600.0,30000
+2411,Barristers And Advocates,59400.0,37000
+2411,Judges,59400.0,37000
+2411,Barristers And Judges,59400.0,37000
+2412,Commercial Solicitors And Lawyers,51600.0,39000
+2412,Criminal Solicitors And Lawyers,51600.0,39000
+2412,Family Solicitors And Lawyers,51600.0,39000
+2412,Property Solicitors And Lawyers,51600.0,39000
+2412,Solicitors And Lawyers,51600.0,39000
+2419,Conveyancers,33400.0,25100
+2419,Litigation Executives,33400.0,25100
+2419,Paralegals,33400.0,25100
+2419,Patent And Trademark Attorneys,33400.0,25100
+2419,Legal Professionals,33400.0,25100
+2421,Auditors (Qualified Accountant),49200.0,36900
+2421,Financial Accountants (Qualified),49200.0,36900
+2421,Forensic Accountants,49200.0,36900
+2421,Fund Accountants,49200.0,36900
+2421,Insolvency Practitioners,49200.0,36900
+2421,Chartered And Certified Accountants,49200.0,36900
+2422,Credit Analysts,45800.0,34200
+2422,Financial Advisers And Planners,45800.0,34200
+2422,Financial Analysts,45800.0,34200
+2422,Mortgage Advisers,45800.0,34200
+2422,Finance And Investment Analysts And Advisers,45800.0,34200
+2423,Taxation Experts,48500.0,35400
+2431,Business Analysts And Consultants,50200.0,36000
+2431,Management Advisers And Consultants,50200.0,36000
+2431,Risk Analysts,50200.0,36000
+2431,Management Consultants And Business Analysts,50200.0,36000
+2432,Commercial Managers,50100.0,39900
+2432,Marketing Managers,50100.0,39900
+2432,Marketing And Commercial Managers,50100.0,39900
+2433,Actuaries And Actuarial Analysts,55100.0,40700
+2433,Economists,55100.0,40700
+2433,Mathematicians,55100.0,40700
+2433,Statistical Data Scientists,55100.0,40700
+2433,Statisticians,55100.0,40700
+2433,"Actuaries, Economists And Statisticians",55100.0,40700
+2434,Intelligence Analysts,38800.0,31500
+2434,Researchers In Media And Entertainment,38800.0,31500
+2434,Business And Related Research Professionals,38800.0,31500
+2435,Professional / Chartered Company Secretaries,58200.0,38600
+2439,Policy Officers,56600.0,43200
+2439,"Business, Research And Administrative Professionals",56600.0,43200
+2440,Business Change Managers,56500.0,43300
+2440,Clinical Trials Coordinators,56500.0,43300
+2440,Risk Managers,56500.0,43300
+2440,Business And Financial Project Management Professionals,56500.0,43300
+2451,Architects,47600.0,37800
+2451,Landscape Architects And Designers,47600.0,37800
+2452,Chartered Architectural Technologists,35800.0,28200
+2452,Town Planning Officers,35800.0,28200
+2452,Urban Designers,35800.0,28200
+2452,"Chartered Architectural Technologists, Planning Officers And Consultants",35800.0,28200
+2453,Quantity Surveyors,48600.0,38500
+2454,Building Control Surveyors,43800.0,36000
+2454,Hydrographic Surveyors,43800.0,36000
+2454,Land Surveyors,43800.0,36000
+2454,Property Surveyors,43800.0,36000
+2454,Chartered Surveyors,43800.0,36000
+2455,Construction Project And Contract Managers,44300.0,36600
+2455,Transport Planners,44300.0,36600
+2455,Construction Project Managers And Related Professionals,44300.0,36600
+2462,Probation Officers,35700.0,29400
+2464,Youth Work Professionals,38000.0,34500
+2469,Adoption Officers,39700.0,33500
+2469,Children And Family Services Professionals,39700.0,33500
+2469,Mediators And Restorative Practice Professionals,39700.0,33500
+2469,Welfare Professionals,39700.0,33500
+2471,Librarians,34800.0,26400
+2472,Archivists,33400.0,29600
+2472,Collection Managers And Curators,33400.0,29600
+2472,Conservators,33400.0,29600
+2472,Museum Education Officers,33400.0,29600
+2472,Archivists And Curators,33400.0,29600
+2481,Garment Technologists,41300.0,34100
+2481,Planning Engineers,41300.0,34100
+2481,Quality Control Engineers,41300.0,34100
+2481,Quality Control And Planning Engineers,41300.0,34100
+2482,Compliance And Regulatory Professionals,48200.0,38100
+2482,Quality Assurance Professionals,48200.0,38100
+2483,Environmental Health Professionals,40900.0,34100
+2491,"Newspaper, Periodical And Broadcast Editors",39600.0,32200
+2492,Broadcast Journalists,34000.0,25500
+2492,Newspaper Journalists And Reporters,34000.0,25500
+2492,Newspaper And Periodical Journalists And Reporters,34000.0,25500
+2493,Press Officers,37000.0,30100
+2493,Public Relations Officers,37000.0,30100
+2493,Social Media Managers,37000.0,30100
+2493,Public Relations Professionals,37000.0,30100
+2494,Advertising Account Managers,46000.0,37200
+2494,Creative Directors,46000.0,37200
+2494,Fundraising Managers,46000.0,37200
+3111,Biological Laboratory Technicians,33400.0,25000
+3111,Chemical Laboratory Technicians,33400.0,25000
+3111,Health Physics Monitors,33400.0,25000
+3111,Laboratory Food Technicians,33400.0,25000
+3111,Medical Laboratory Technicians,33400.0,25000
+3111,Laboratory Technicians,33400.0,25000
+3112,Avionics Technicians,39300.0,30800
+3112,Electrical And Electronics Technicians,39300.0,30800
+3113,Aerospace Technicians,42500.0,34700
+3113,Wind Turbine Technicians,42500.0,34700
+3113,Engineering Technicians,42500.0,34700
+3114,Building Technicians,33400.0,27900
+3114,Civil Engineering Technicians,33400.0,27900
+3114,Surveying Technicians,33400.0,27900
+3114,Building And Civil Engineering Technicians,33400.0,27900
+3115,Quality Assurance Technicians,33400.0,26500
+3116,"Planning, Process And Production Technicians",34800.0,28700
+3119,School Technicians,34600.0,28000
+3119,Textile Consultants,34600.0,28000
+3119,"Science, Engineering And Production Technicians",34600.0,28000
+3120,Architectural Technicians,33800.0,28700
+3120,Bim And Cad Technicians,33800.0,28700
+3120,Cartographers,33800.0,28700
+3120,"Cad, Drawing And Architectural Technicians",33800.0,28700
+3131,Games Testers,35200.0,27700
+3131,Network And Systems Administrators,35200.0,27700
+3131,Quality Assurance Testers,35200.0,27700
+3131,Software Technicians,35200.0,27700
+3131,It Operations Technicians,35200.0,27700
+3132,It User Support Technicians,33400.0,27700
+3133,Database Administrators,34600.0,29200
+3133,Web Content Technicians,34600.0,29200
+3133,Database Administrators And Web Content Technicians,34600.0,29200
+3211,Dispensing Opticians,33400.0,25100
+3212,Pharmaceutical Technicians,33400.0,25000
+3214,Alexander Technique Teachers,25000.0,25000
+3214,Aromatherapists,25000.0,25000
+3214,Homeopaths (Excludes Medically Qualified),25000.0,25000
+3214,Hospital Play Specialists,25000.0,25000
+3214,Hypnotherapists,25000.0,25000
+3214,Massage Therapists,25000.0,25000
+3214,Reflexologists,25000.0,25000
+3214,Reiki Healers,25000.0,25000
+3214,Complementary Health Associate Professionals,25000.0,25000
+3221,Community Workers,33400.0,26500
+3221,Family Support Workers,33400.0,26500
+3221,Youth Workers (Excludes Youth Work Professionals),33400.0,26500
+3221,Youth And Community Workers,33400.0,26500
+3222,Child Protection Officers,33400.0,25400
+3222,Learning And Behaviour Mentors,33400.0,25400
+3222,Welfare And Attendance Officers,33400.0,25400
+3222,Child And Early Years Officers,33400.0,25400
+3223,Housing Officers,33400.0,27800
+3224,Bereavement Counsellors,33400.0,26200
+3224,Debt Advisers,33400.0,26200
+3224,Life Coaches,33400.0,26200
+3224,Relationship Counsellors,33400.0,26200
+3224,Substance Misuse Workers,33400.0,26200
+3224,Counsellors,33400.0,26200
+3229,Advocates (Excludes Solicitor Advocates),33400.0,25400
+3229,Celebrants,33400.0,25400
+3229,Charity Workers,33400.0,25400
+3229,Day Care Officers,33400.0,25400
+3229,Health Advisers,33400.0,25400
+3229,Homelessness And Housing Advice Support Workers,33400.0,25400
+3229,Mental Health Project Workers,33400.0,25400
+3229,Probation Service Workers,33400.0,25400
+3229,Student Support Workers,33400.0,25400
+3229,Victim Support Workers,33400.0,25400
+3229,Welfare And Housing Associate Professionals,33400.0,25400
+3232,Early Education And Childcare Practitioners,33400.0,25000
+3240,Veterinary Nurses,33400.0,25000
+3312,Police Constable,46900.0,36700
+3312,Police Sergeant,46900.0,36700
+3312,Police Officers (Sergeant And Below),46900.0,36700
+3313,Firefighters,42100.0,37600
+3313,Fire Service Crew Managers,42100.0,37600
+3313,Watch Managers,42100.0,37600
+3313,Fire Service Officers (Watch Manager And Below),42100.0,37600
+3314,Operational Support Grades,38800.0,31600
+3314,Prison Officers,38800.0,31600
+3314,Prison Service Officers (Below Principal Officer),38800.0,31600
+3319,Coastguard,41100.0,33200
+3319,Customs And Border Control Officers,41100.0,33200
+3319,Fraud Investigators (Excludes Benefit Fraud),41100.0,33200
+3319,Immigration Officers,41100.0,33200
+3319,Private Investigators,41100.0,33200
+3319,Security Consultants And Managers (Excludes Cyber Security),41100.0,33200
+3319,Protective Service Associate Professionals,41100.0,33200
+3411,Art Technicians (Excludes Education),38200.0,26600
+3411,Drawing And Painting Artists,38200.0,26600
+3411,Hand Drawn Animators,38200.0,26600
+3411,Illustrators (Excludes Medical And Scientific),38200.0,26600
+3411,Medical And Scientific Illustrators,38200.0,26600
+3411,Picture Restorers,38200.0,26600
+3411,Sculptors,38200.0,26600
+3411,Tattoo And Henna Artists,38200.0,26600
+3411,Artists,38200.0,26600
+3412,Authors,36100.0,29800
+3412,Bloggers,36100.0,29800
+3412,Copywriters,36100.0,29800
+3412,Literary Editors,36100.0,29800
+3412,Poets,36100.0,29800
+3412,Script Writers,36100.0,29800
+3412,Technical Writers (Excludes Computing),36100.0,29800
+3412,Translators And Interpreters,36100.0,29800
+3412,"Authors, Writers And Translators",36100.0,29800
+3413,Actors,33400.0,25000
+3413,"Broadcasters, Podcasters And Presenters",33400.0,25000
+3413,Children’S Entertainers,33400.0,25000
+3413,Comedians,33400.0,25000
+3413,Disc Jockeys,33400.0,25000
+3413,Magicians,33400.0,25000
+3413,Models,33400.0,25000
+3413,Singers,33400.0,25000
+3413,Social Media Influencers,33400.0,25000
+3413,"Actors, Entertainers And Presenters",33400.0,25000
+3414,Choreographers,33400.0,28500
+3414,Dance Teachers (Excludes Educational Establishments),33400.0,28500
+3414,Dancers,33400.0,28500
+3415,Composers And Musical Arrangers,37500.0,30100
+3415,Music Conductors,37500.0,30100
+3415,Instrumentalists,37500.0,30100
+3415,Musicians,37500.0,30100
+3416,Art Consultants,38100.0,28800
+3416,Broadcasting And Entertainment Directors,38100.0,28800
+3416,Broadcasting And Entertainment Editors,38100.0,28800
+3416,Broadcasting And Entertainment Producers,38100.0,28800
+3416,Studio And Stage Managers,38100.0,28800
+3416,"Arts Officers, Producers And Directors",38100.0,28800
+3417,Camera Operators And Videographers,33400.0,25400
+3417,Lighting Designers,33400.0,25400
+3417,Photographers,33400.0,25400
+3417,Sound Designers,33400.0,25400
+3417,Sound Engineers,33400.0,25400
+3417,Theatre Technicians (Excludes Hospitals),33400.0,25400
+3417,"Photographers, Audio-Visual And Broadcasting Equipment Operators",33400.0,25400
+3421,Interior Designers,35200.0,29600
+3422,Clothing And Fashion Consultants,36500.0,29100
+3422,Clothing And Fashion Designers,36500.0,29100
+3422,Footwear Designers,36500.0,29100
+3422,Jewellery Designers,36500.0,29100
+3422,Textile Designers,36500.0,29100
+3422,"Clothing, Fashion And Accessories Designers",36500.0,29100
+3429,Industrial And Product Designers,39300.0,29800
+3429,Packaging Designers,39300.0,29800
+3429,Performance Make-Up Artists,39300.0,29800
+3429,Set Designers,39300.0,29800
+3429,Visual Merchandising Managers And Designers,39300.0,29800
+3429,Design Occupations,39300.0,29800
+3433,Group Fitness Instructors And Personal Trainers,33400.0,25000
+3433,Pilates Teachers,33400.0,25000
+3433,Yoga Teachers,33400.0,25000
+3433,Fitness And Wellbeing Instructors,33400.0,25000
+3511,Airline Pilots,80400.0,64100
+3511,Air Traffic Controllers,80400.0,64100
+3511,Flying Instructors,80400.0,64100
+3511,Helicopter Pilots,80400.0,64100
+3511,Aircraft Pilots And Air Traffic Controllers,80400.0,64100
+3512,Ship And Hovercraft Captains And Deck Officers (Excludes Armed Forces And Fishing),58300.0,39100
+3512,Marine Engineers,58300.0,39100
+3512,Ship And Hovercraft Officers,58300.0,39100
+3520,Conveyancing Professionals,33400.0,26400
+3520,Cost Lawyers,33400.0,26400
+3520,Barrister’S And Judge’S Clerks,33400.0,26400
+3520,Litigation Officers,33400.0,26400
+3520,Probate Managers,33400.0,26400
+3520,Will Writers,33400.0,26400
+3520,Legal Associate Professionals,33400.0,26400
+3531,Commodity Brokers And Traders,52400.0,40000
+3531,Insurance And Mortgage Brokers,52400.0,40000
+3531,Shipbrokers,52400.0,40000
+3531,Stockbrokers,52400.0,40000
+3531,Brokers,52400.0,40000
+3532,Insurance Underwriters,36500.0,29800
+3533,Accounting Technicians,48700.0,32900
+3533,Financial Control Technicians,48700.0,32900
+3533,Financial And Accounting Technicians,48700.0,32900
+3534,Claims Managers,44700.0,34800
+3534,Credit Managers,44700.0,34800
+3534,Investment Managers,44700.0,34800
+3534,Relationship Managers,44700.0,34800
+3534,Financial Accounts Managers,44700.0,34800
+3541,Energy Advisers And Assessors,35300.0,28600
+3541,Estimators,35300.0,28600
+3541,Loss Adjusters,35300.0,28600
+3541,Valuers,35300.0,28600
+3541,Vehicle Damage Assessors,35300.0,28600
+3541,"Estimators, Valuers And Assessors",35300.0,28600
+3542,Importers And Exporters,35700.0,29800
+3543,Project Support Officers,33900.0,28900
+3544,Data Analysts,34900.0,28600
+3549,Business Support Officers,33400.0,25500
+3549,Business Systems Analysts,33400.0,25500
+3549,Contract Administrators,33400.0,25500
+3549,Clinical Coders,33400.0,25500
+3549,Clinical Trials Administrators,33400.0,25500
+3549,Research Coordinators,33400.0,25500
+3549,Business Associate Professionals,33400.0,25500
+3551,Buyers And Procurement Officers,35500.0,29300
+3552,Business Sales Executives,36700.0,29300
+3553,Merchandisers,33400.0,25200
+3554,Advertising And Marketing Executives,33400.0,26300
+3554,Fundraisers,33400.0,26300
+3554,Market Researchers (Excludes Interviewers),33400.0,26300
+3554,Marketing Associate Professionals,33400.0,26300
+3555,Estate Agents,33400.0,25000
+3555,Land And Property Auctioneers And Valuers,33400.0,25000
+3555,Letting Agents,33400.0,25000
+3555,Estate Agents And Auctioneers,33400.0,25000
+3556,Brand Managers,55200.0,40500
+3556,Business Development Managers,55200.0,40500
+3556,Sales Account Managers,55200.0,40500
+3556,Sales Accounts And Business Development Managers,55200.0,40500
+3557,Conference Managers And Organisers,33400.0,25000
+3557,Exhibition Managers And Organisers,33400.0,25000
+3557,Festival Managers And Organisers,33400.0,25000
+3557,Hospitality Managers,33400.0,25000
+3557,Wedding Planners And Organisers,33400.0,25000
+3557,Event Managers And Organisers,33400.0,25000
+3560,Electoral Services Officers,39500.0,34000
+3560,Health Service Administrators,39500.0,34000
+3560,Job Centre Officers,39500.0,34000
+3560,Waste Management Officers,39500.0,34000
+3560,Public Services Associate Professionals,39500.0,34000
+3571,Equality And Diversity Officers,33400.0,27100
+3571,Human Resources Advisers,33400.0,27100
+3571,Recruitment Consultants,33400.0,27100
+3571,Human Resources And Industrial Relations Officers,33400.0,27100
+3572,Careers Advisers And Coaches,33400.0,26700
+3572,Work Placement Officers,33400.0,26700
+3572,Careers Advisers And Vocational Guidance Specialists,33400.0,26700
+3573,Information Technology Trainers,40000.0,32100
+3574,Business Coaches,34500.0,28200
+3574,Retail And Store Trainers,34500.0,28200
+3574,Training Assessors,34500.0,28200
+3574,Other Vocational And Industrial Trainers,34500.0,28200
+3581,Animal Health Inspectors And Officers,34400.0,30000
+3581,Building Control Officers,34400.0,30000
+3581,Driving Examiners,34400.0,30000
+3581,Health And Safety Inspectors,34400.0,30000
+3581,Housing And Planning Inspectors,34400.0,30000
+3581,Licensing Officers,34400.0,30000
+3581,Meat Hygiene Inspectors,34400.0,30000
+3581,Nuclear Safety Inspectors,34400.0,30000
+3581,Trading Standards Officers,34400.0,30000
+3581,Traffic And Vehicle Examiners And Inspectors,34400.0,30000
+3581,Inspectors Of Standards And Regulations,34400.0,30000
+3582,Asbestos Safety Officers,42500.0,34800
+3582,Fire Safety Managers And Officers,42500.0,34800
+3582,Occupational Health And Safety Managers And Officers,42500.0,34800
+3582,Road Traffic And Transport Safety Officers,42500.0,34800
+3582,Occupational Hygienists,42500.0,34800
+3582,Health And Safety Managers And Officers,42500.0,34800
+4111,National Government Benefits Officers,33400.0,25900
+4111,National Government Revenue Officers,33400.0,25900
+4111,Passport Officers,33400.0,25900
+4111,National Government Administrative Occupations,33400.0,25900
+4112,Local Government Benefits Officers,33400.0,26000
+4112,Local Government Housing Assistants,33400.0,26000
+4112,Local Government Revenue Officers,33400.0,26000
+4112,Parish Clerks,33400.0,26000
+4112,Local Government Administrative Occupations,33400.0,26000
+4113,Charity Administrators,33400.0,25000
+4113,Clerks To Governors,33400.0,25000
+4113,Union Officials,33400.0,25000
+4113,Officers Of Non-Governmental Organisations,33400.0,25000
+4121,Credit Controllers,33400.0,25200
+4122,Accounting Clerks And Bookkeepers,33400.0,25400
+4122,Payroll Officers And Wages Clerks,33400.0,25400
+4122,"Bookkeepers, Payroll Managers And Wage Clerks",33400.0,25400
+4124,Finance Officers,33400.0,25600
+4129,Box Office Assistants,33400.0,25000
+4129,Grants Officers,33400.0,25000
+4129,Mortgage Administrators,33400.0,25000
+4129,Revenue Assistants (Excludes National And Local Government Revenue Occupations),33400.0,25000
+4129,Treasury Assistants,33400.0,25000
+4129,Finance Administrative Occupations,33400.0,25000
+4132,Claims Handlers,33400.0,25000
+4132,Insurance Administrators,33400.0,25000
+4132,Pensions Administrators,33400.0,25000
+4132,Pensions And Insurance Clerks And Assistants,33400.0,25000
+4134,Transport And Distribution Clerks And Assistants,33400.0,25900
+4141,Office Managers,37400.0,30000
+4143,Call Centre Managers,35200.0,27600
+4143,Customer Service Managers,35200.0,27600
+4151,Sales Administrators,33400.0,25000
+4159,Business Administrators,33400.0,25000
+4159,Church Administrators,33400.0,25000
+4159,Facilities Coordinators,33400.0,25000
+4159,Proofreaders,33400.0,25000
+4159,Property Administrators,33400.0,25000
+4159,Warranty Administrators,33400.0,25000
+4159,Other Administrative Occupations,33400.0,25000
+4214,Company Secretaries And Administrators,33400.0,27100
+4215,Farm Secretaries,33400.0,27400
+4215,Personal Assistants (Excludes Care Workers),33400.0,27400
+4215,Personal Assistants And Other Secretaries,33400.0,27400
+5111,Agricultural Contractors,34100.0,28200
+5111,Aquaculture Farmers,34100.0,28200
+5111,Arable Farmers,34100.0,28200
+5111,Dairy Farmers,34100.0,28200
+5111,Livestock Farmers,34100.0,28200
+5111,Poultry Farmers,34100.0,28200
+5111,Farmers,34100.0,28200
+5112,Horticultural Trades,33400.0,25000
+5113,Garden Designers,33400.0,25000
+5113,Gardeners (Excludes Horticultural / Market Gardening),33400.0,25000
+5113,Green Roof Installers,33400.0,25000
+5113,Landscape Gardeners,33400.0,25000
+5113,Gardeners And Landscape Gardeners,33400.0,25000
+5114,Groundsmen And Greenkeepers,33400.0,25000
+5119,Arborists,33400.0,25000
+5119,Beekeepers,33400.0,25000
+5119,Countryside And Park Officers And Rangers,33400.0,25000
+5119,Falconers,33400.0,25000
+5119,Fish And River Keepers,33400.0,25000
+5119,Fishers,33400.0,25000
+5119,Gamekeepers,33400.0,25000
+5119,Agricultural And Fishing Trades,33400.0,25000
+5211,Metal Fabricators And Finishers,33400.0,26800
+5211,Panel Beaters (Excludes Vehicles),33400.0,26800
+5211,Whitesmiths,33400.0,26800
+5211,Sheet Metal Workers,33400.0,26800
+5212,Die Casters,36700.0,29200
+5212,Farriers,36700.0,29200
+5212,"Moulders, Mould Makers And Core Makers",36700.0,29200
+5212,Smiths,36700.0,29200
+5212,"Metal Plate Workers, Smiths, Moulders And Related Occupations",36700.0,29200
+5213,Braziers And Solderers,34900.0,29500
+5213,Pipe Welders,34900.0,29500
+5213,Plate Welders,34900.0,29500
+5213,Welding Trades,34900.0,29500
+5214,Pipe Fitters,46000.0,40400
+5221,Computer Numerical Control (Cnc) Machine Setters And Setter-Operators,34600.0,28500
+5221,Metal Machining Setters And Setter-Operators,34600.0,28500
+5222,Tool Fitters,38400.0,33400
+5222,Tool Makers,38400.0,33400
+5222,"Tool Makers, Tool Fitters And Markers-Out",38400.0,33400
+5223,Automation Maintenance Technicians,39300.0,29900
+5223,Bicycle Mechanics,39300.0,29900
+5223,Catering Equipment Technicians,39300.0,29900
+5223,Door Fitters And Makers,39300.0,29900
+5223,Gunsmiths,39300.0,29900
+5223,Heavy Plant Maintenance Technicians,39300.0,29900
+5223,Hydraulic Technicians,39300.0,29900
+5223,Lift Technicians,39300.0,29900
+5223,Locksmiths,39300.0,29900
+5223,Pump Technicians,39300.0,29900
+5223,Textile Machine Technicians,39300.0,29900
+5223,Turbine Fitters,39300.0,29900
+5223,Metal Working Production And Maintenance Fitters,39300.0,29900
+5224,Calibration And Precision Instrument Technicians,33400.0,28300
+5224,Camera And Photographic Equipment Technicians,33400.0,28300
+5224,"Horologists, Watch Makers And Repairers",33400.0,28300
+5224,Optical Technicians,33400.0,28300
+5224,Precision Instrument Makers And Repairers,33400.0,28300
+5225,Air-Conditioning And Refrigeration Installers And Repairers,41100.0,35500
+5231,Auto Electricians,35500.0,27900
+5231,Car / Light Vehicle Technicians,35500.0,27900
+5231,Heavy And Large Vehicle Technicians,35500.0,27900
+5231,Motorcycle Technicians,35500.0,27900
+5231,Motorsport Technicians,35500.0,27900
+5231,Mot Testers,35500.0,27900
+5231,Roadside Assistance Technicians,35500.0,27900
+5231,"Vehicle Technicians, Mechanics And Electricians",35500.0,27900
+5232,Vehicle Body Builders And Repairers,33400.0,27600
+5233,Vehicle Paint Technicians,33400.0,29600
+5234,Aircraft Maintenance And Related Trades,45000.0,34800
+5235,Boat And Ship Builders And Repairers,33700.0,29600
+5236,Rail And Rolling Stock Builders And Repairers,57000.0,38800
+5241,Electric Vehicle Charging Point Installers,38800.0,31500
+5241,Electro-Mechanical Technicians,38800.0,31500
+5241,Installation And Maintenance Electricians,38800.0,31500
+5241,Smart Energy Experts,38800.0,31500
+5241,Solar Panel Installers,38800.0,31500
+5241,Street Lighting Electrician,38800.0,31500
+5241,Electricians And Electrical Fitters,38800.0,31500
+5242,Telecoms And Related Network Installers And Repairers,36700.0,31700
+5243,"Tv, Video And Audio Servicers And Repairers",33400.0,25100
+5244,Computer System And Equipment Installers And Servicers,35100.0,26700
+5245,Security System Installers And Repairers,36300.0,28800
+5246,Electrical Service And Maintenance Mechanics And Repairers,39700.0,33800
+5249,Broadcast And Communications Technicians,45800.0,35600
+5249,Overhead Line Workers,45800.0,35600
+5249,Signal Workers,45800.0,35600
+5249,Electrical And Electronic Trades,45800.0,35600
+5250,"Skilled Metal, Electrical And Electronic Trades Supervisors",42400.0,36500
+5311,Steel Erectors,35000.0,29500
+5312,Dry Stone Wallers,33400.0,28500
+5312,Monumental Masons,33400.0,28500
+5312,Stonemasons,33400.0,28500
+5312,Stonemasons And Related Trades,33400.0,28500
+5313,Bricklayers,33400.0,25600
+5314,Felt And Flat Roofers,33400.0,25300
+5314,Sheeters And Cladders,33400.0,25300
+5314,Thatchers,33400.0,25300
+5314,Tilers And Slaters,33400.0,25300
+5314,"Roofers, Roof Tilers And Slaters",33400.0,25300
+5315,Plumbers And Heating And Ventilation Installers And Repairers,38100.0,31400
+5316,Bedroom And Kitchen Fitters,33400.0,27800
+5316,Carpenters,33400.0,27800
+5316,Joiners,33400.0,27800
+5316,Carpenters And Joiners,33400.0,27800
+5317,Glass Cutters And Glaziers,33400.0,25800
+5317,Window Fabricators,33400.0,25800
+5317,Window Fitters,33400.0,25800
+5317,"Glaziers, Window Fabricators And Fitters",33400.0,25800
+5319,Builders,33400.0,27300
+5319,Divers,33400.0,27300
+5319,Fence Erectors,33400.0,27300
+5319,Industrial Climbers,33400.0,27300
+5319,Remotely Operated Vehicle (Rov) Operators,33400.0,27300
+5319,Steel Fixers And Underpinners,33400.0,27300
+5319,Construction And Building Trades,33400.0,27300
+5321,Dry Liners,34200.0,29500
+5321,Plasterers (Wall And Decorative),34200.0,29500
+5322,Carpet And Linoleum Fitters,33400.0,25400
+5322,Floor Layers,33400.0,25400
+5322,Tilers,33400.0,25400
+5322,Floorers And Wall Tilers,33400.0,25400
+5323,Painters And Decorators,33400.0,27800
+5330,Carpenter And Joinery Supervisors,41800.0,34600
+5330,Demolition Supervisors,41800.0,34600
+5330,Painting Supervisors,41800.0,34600
+5330,Plumbing Supervisors,41800.0,34600
+5330,Road Construction Supervisors,41800.0,34600
+5330,Roofing Supervisors,41800.0,34600
+5330,Scaffolding Supervisors,41800.0,34600
+5330,Construction And Building Trade Supervisors,41800.0,34600
+5411,Curtain Makers,33400.0,25000
+5411,Trimmers And Upholsterers,33400.0,25000
+5411,Upholsterers,33400.0,25000
+5412,Footwear Makers And Repairers,33400.0,25000
+5412,Leather Workers (Excludes Leather Dressing),33400.0,25000
+5412,Footwear And Leather Working Trades,33400.0,25000
+5413,Costume Makers,33400.0,25000
+5413,Dressmakers,33400.0,25000
+5413,Fitters And Alterations Assistants,33400.0,25000
+5413,Kilt Makers,33400.0,25000
+5413,"Milliners (Excludes Wholesale, Retail Trade)",33400.0,25000
+5413,Tailors,33400.0,25000
+5413,Tailors And Dressmakers,33400.0,25000
+5419,Embroiderers And Sewers,33400.0,25000
+5419,Knitters,33400.0,25000
+5419,Sail Makers,33400.0,25000
+5419,"Weavers (Excludes Basket, Wig And Wire Goods Mfr)",33400.0,25000
+5419,"Textiles, Garments And Related Trades",33400.0,25000
+5421,Pre-Press Technicians,33400.0,25000
+5422,Digital Printers,33400.0,26200
+5422,Flexographic Printers,33400.0,26200
+5422,Lithographic Printers,33400.0,26200
+5422,Screen Printers,33400.0,26200
+5422,Printers,33400.0,26200
+5423,Print Finishing And Binding Workers,33400.0,25000
+5431,Butchers,33400.0,25000
+5431,Slaughterers,33400.0,25000
+5432,Bakers (Excludes Food Process Bakery Workers And Textile Manufacturing),33400.0,25000
+5432,Cake Decorators And Designers,33400.0,25000
+5432,Bakers And Flour Confectioners,33400.0,25000
+5433,Fishmongers,33400.0,25000
+5433,Poultry Dressers,33400.0,25000
+5433,Fishmongers And Poultry Dressers,33400.0,25000
+5434,Chefs,33400.0,25000
+5436,Catering And Bar Managers,33400.0,25000
+5441,"Ceramic Makers, Decorators And Finishers",33400.0,25400
+5441,Ceramic Potters,33400.0,25400
+5441,Glass Blowers,33400.0,25400
+5441,"Glass Makers, Decorators And Finishers",33400.0,25400
+5441,Optical Glass Makers,33400.0,25400
+5441,"Glass And Ceramics Makers, Decorators And Finishers",33400.0,25400
+5442,Cabinet Makers (Excludes Metal),33400.0,25000
+5442,Furniture Makers And Fitters,33400.0,25000
+5442,Furniture Restorers,33400.0,25000
+5442,Furniture Sprayers And Finishers,33400.0,25000
+5442,Picture Framers,33400.0,25000
+5442,Shed Makers,33400.0,25000
+5442,Furniture Makers And Other Craft Woodworkers,33400.0,25000
+5443,Florists,33400.0,25000
+5449,Basket Makers (Excludes Wire Goods Mfr),33400.0,25800
+5449,Candle Makers,33400.0,25800
+5449,"Goldsmiths, Silversmiths, Jewellers And Precious Stone Workers",33400.0,25800
+5449,Hairpiece And Wig Makers,33400.0,25800
+5449,Metal Engravers,33400.0,25800
+5449,Craft Model Makers,33400.0,25800
+5449,"Musical Instrument Repairers, Makers And Tuners",33400.0,25800
+5449,Sign Makers And Writers,33400.0,25800
+5449,Toy Makers And Repairers,33400.0,25800
+5449,Other Skilled Trades,33400.0,25800
+6111,Early Education And Childcare Assistants,33400.0,25000
+6114,Childminders,33400.0,25000
+6116,Au Pairs,25000.0,25000
+6116,Nannies,25000.0,25000
+6117,Playworkers,33400.0,25000
+6129,Animal Boarding Assistants,33400.0,25000
+6129,Animal Breeders,33400.0,25000
+6129,Animal Groomers,33400.0,25000
+6129,Animal Trainers (Excludes Performing Animals),33400.0,25000
+6129,Animal Walkers,33400.0,25000
+6129,Animal Welfare Workers,33400.0,25000
+6129,Stable Workers,33400.0,25000
+6129,Veterinary Assistants,33400.0,25000
+6129,Zookeepers,33400.0,25000
+6129,Animal Care Services Occupations,33400.0,25000
+6134,Foster Carers,33400.0,25000
+6134,Residential Childcare Practitioners,33400.0,25000
+6134,School Matrons And Houseparents,33400.0,25000
+6134,Residential Housing Wardens,33400.0,25000
+6134,Houseparents And Residential Wardens,33400.0,25000
+6135,Community Support Workers,33400.0,25000
+6135,Home Care Workers,33400.0,25000
+6135,Residential Care Workers,33400.0,25000
+6135,Care Workers And Home Carers,33400.0,25000
+6136,Senior Community Support Workers,33400.0,25000
+6136,Senior Home Care Workers,33400.0,25000
+6136,Senior Residential Care Workers,33400.0,25000
+6136,Senior Care Workers,33400.0,25000
+6213,Flight Attendants,33400.0,25000
+6213,Passenger Services Assistants,33400.0,25000
+6213,Air Travel Assistants,33400.0,25000
+6214,Railway Station Assistants,41300.0,35400
+6214,Revenue Protection Officers,41300.0,35400
+6214,Train Conductors And Guards,41300.0,35400
+6214,Rail Travel Assistants,41300.0,35400
+6232,Playworkers,25000.0,25000
+6250,Animal Boarding Assistants,25000.0,25000
+6250,Animal Breeders,25000.0,25000
+6250,Animal Groomers,25000.0,25000
+6250,Animal Trainers (Excludes Performing Animals),25000.0,25000
+6250,Animal Walkers,25000.0,25000
+6250,Animal Welfare Workers,25000.0,25000
+6250,Stable Workers,25000.0,25000
+6250,Veterinary Assistants,25000.0,25000
+6250,Zookeepers,25000.0,25000
+6250,Animal Care Services Occupations,25000.0,25000
+6311,Foster Carers,33400.0,31600
+6311,Residential Childcare Practitioners,33400.0,31600
+6311,School Matrons And Houseparents,33400.0,31600
+6311,Residential Housing Wardens,33400.0,31600
+6311,Houseparents And Residential Wardens,33400.0,31600
+7115,Vehicle Parts Advisers,25000.0,25000
+7115,Vehicle Sales Executives,25000.0,25000
+7124,Market And Street Traders And Assistants,33400.0,25000
+7125,Fashion Stylists,25000.0,25000
+7125,Visual Merchandisers And Window Dressers,25000.0,25000
+7125,Visual Merchandisers And Related Occupations,25000.0,25000
+7129,Demonstrators And Product Promoters,25000.0,25000
+7129,Hire Desk Controllers,25000.0,25000
+7129,Sales Energy Consultants,25000.0,25000
+7129,Sales Related Occupations,25000.0,25000
+7131,Antique Dealers,33700.0,27200
+7131,Art Dealers,33700.0,27200
+7131,Car Traders,33700.0,27200
+7131,Newsagents,33700.0,27200
+7131,Retail Jewellers,33700.0,27200
+7131,Wholesalers,33700.0,27200
+7131,Wine Merchants,33700.0,27200
+7131,Shopkeepers And Owners - Retail And Wholesale,33700.0,27200
+7132,Sales Supervisors - Retail And Wholesale,33400.0,25000
+7214,Field And Telephone Interviewers,33400.0,25000
+7214,Mystery Shoppers,33400.0,25000
+7214,Political Canvassers,33400.0,25000
+7214,Traffic Enumerators,33400.0,25000
+7220,Customer Service Supervisors,34200.0,28900
+8113,Chemical And Related Process Operatives,33400.0,26700
+8115,Galvanisers And Platers,25000.0,25000
+8115,Metal Sprayers And Powder Coaters,25000.0,25000
+8115,Metal Making And Treating Process Operatives,25000.0,25000
+8133,Boiler Operatives,41500.0,30100
+8133,Compressor Operatives,41500.0,30100
+8133,Nuclear Decommissioning Operatives,41500.0,30100
+8133,Energy Plant Operatives,41500.0,30100
+8134,Water And Sewerage Distribution Operatives,38000.0,31300
+8134,Water Treatment Operatives,38000.0,31300
+8134,Water And Sewerage Plant Operatives,38000.0,31300
+8143,Routine Inspectors And Testers,33400.0,26600
+8215,Cycling Instructors,39500.0,33300
+8215,Forklift Instructors,39500.0,33300
+8215,Heavy And Large Vehicle Driving Instructors,39500.0,33300
+8215,Motorcycle Instructors,39500.0,33300
+8215,Passenger Carrying Vehicle (Pcv) And Car Driving Instructors,39500.0,33300
+8215,Driving Instructors,39500.0,33300
+8232,Marine And Waterways Transport Operatives,38300.0,26300
+9119,Vent Chick Sexer,33400.0,25000
+9119,Deckhand On Large Fishing Vessel (9 Metres And Above),33400.0,25000
+9249,Retail Order Pickers,33400.0,27500
+9249,Trolley Collectors,33400.0,27500
+9249,Elementary Sales Occupations,33400.0,27500
+9252,Warehouse Operatives,25000.0,25000
