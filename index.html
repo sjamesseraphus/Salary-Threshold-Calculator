@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Skilled Worker Salary Checker</title>
+  <title>Skilled Worker SOC Code Salary Checker</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <style>
@@ -18,17 +18,14 @@
     .ok { background:#eaf8ef; border:1px solid #1c7d3a; }
     .fail { background:#fdecee; border:1px solid #b62334; }
     .small { font-size:.85rem; color:#666; }
-    .debug { background:#000;color:#0f0;padding:8px;font-family:monospace;font-size:12px;margin-bottom:10px; }
   </style>
 </head>
 
 <body>
 
-
 <h1>Skilled Worker SOC Code Salary Checker</h1>
-<p class="small">
-  This tool provides an indicative salary comparison only and does not constitute immigration or legal advice.
-</p>
+
+<p class="small">This tool provides an indicative salary comparison only and does not constitute immigration or legal advice.</p>
 
 <p class="small">
   Salary discounts for New Entrants, PhD roles and the Immigration Salary List (ISL) apply only where all Home
@@ -56,7 +53,7 @@
   Independent legal advice should be obtained before making any immigration decisions.
 </p>
 
-
+<!-- ===================== 1. OCCUPATION ===================== -->
 <div class="panel">
   <h2>1. Find the occupation</h2>
 
@@ -74,6 +71,7 @@
   </div>
 </div>
 
+<!-- ===================== 2. HOURS & SALARY ===================== -->
 <div class="panel">
   <h2>2. Hours & salary</h2>
 
@@ -89,6 +87,7 @@
   </div>
 </div>
 
+<!-- ===================== 3. SCENARIO ===================== -->
 <div class="panel">
   <h2>3. Scenario</h2>
 
@@ -103,6 +102,7 @@
   </div>
 </div>
 
+<!-- ===================== 4. CHECK ===================== -->
 <div class="panel">
   <h2>4. Check salary</h2>
   <button id="checkBtn">Check salary</button>
@@ -119,7 +119,7 @@ const MAX_HOURS_FOR_TEST  = 48;
 
 let socData = [];
 
-// Robust CSV parser (handles commas properly)
+// Robust CSV parser
 function parseCSV(text) {
   const rows = [];
   let current = [], value = "", inQuotes = false;
@@ -151,13 +151,8 @@ function parseCSV(text) {
 
 async function loadCSV() {
   const URL = "2_soc_full_for_calculator.csv?nocache=" + Date.now();
-  document.getElementById("debug").textContent = "Fetching: " + URL;
-
   const res = await fetch(URL);
   const text = await res.text();
-
-  document.getElementById("debug").textContent =
-    "Loaded successfully. First 100 chars: " + text.slice(0, 100);
 
   const rows = parseCSV(text.trim());
   const headers = rows.shift();
@@ -188,11 +183,9 @@ function populateDropdown(list) {
 function updateJobInfo() {
   const soc = document.getElementById("socSelect").value;
   const role = socData.find(r => r.SOC_code === soc);
-  const infoDiv = document.getElementById("jobInfo");
-
   if (!role) return;
 
-  infoDiv.textContent =
+  document.getElementById("jobInfo").textContent =
     `Standard going rate: £${Number(role.Standard_going_rate_annual).toLocaleString()} — ` +
     `Lower rate: £${Number(role.Lower_going_rate_annual).toLocaleString()}`;
 }
@@ -261,4 +254,3 @@ loadCSV();
 
 </body>
 </html>
-
