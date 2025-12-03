@@ -18,192 +18,118 @@
     .ok { background:#eaf8ef; border:1px solid #1c7d3a; }
     .fail { background:#fdecee; border:1px solid #b62334; }
     .small { font-size:.85rem; color:#666; }
+    .debug { background:#000;color:#0f0;padding:8px;font-family:monospace;font-size:12px;margin-bottom:10px; }
   </style>
 </head>
 
 <body>
 
+<div id="debug" class="debug">Loading CSV...</div>
+
 <h1>Skilled Worker Salary Checker</h1>
-<p class="small">
-  This tool gives an indicative comparison against Skilled Worker visa salary rules.
-  Always verify figures on GOV.UK and seek legal advice for immigration decisions.
-</p>
 
 <div class="panel">
   <h2>1. Find the occupation</h2>
-
-  <label>Search job title or SOC code</label>
   <input id="searchJob" type="text" placeholder="e.g. nurse, engineer, 2231…">
-
-  <label>Select SOC code</label>
-  <select id="socSelect">
-    <option>Loading SOC codes…</option>
-  </select>
-
+  <select id="socSelect"></select>
   <div id="jobInfo" class="small"></div>
-
-  <div class="info small">
-    Standard Occupational Classification (SOC) codes group jobs by their main duties.
-    Match based on duties rather than job title alone.
-  </div>
 </div>
 
 <div class="panel">
   <h2>2. Hours & salary</h2>
-
-  <label>Weekly hours</label>
-  <input id="hours" type="number" value="37.5" min="1" step="0.1">
-
-  <label>Proposed annual salary (£)</label>
-  <input id="salary" type="number" step="100">
-
-  <div class="info small">
-    Salaries must meet the higher of the relevant general threshold,
-    the going rate for the occupation, and the minimum hourly rate.
-    Only guaranteed basic pay and guaranteed allowances can be counted.
-  </div>
+  <input id="hours" type="number" value="37.5">
+  <input id="salary" type="number">
 </div>
 
 <div class="panel">
   <h2>3. Scenario</h2>
-
-  <label><input type="radio" name="scenario" value="standard" checked> Standard rate</label>
-  <label><input type="radio" name="scenario" value="newEntrant"> New entrant rate</label>
-  <label><input type="radio" name="scenario" value="phdNonStem"> PhD (non-STEM)</label>
-  <label><input type="radio" name="scenario" value="phdStem"> PhD (STEM)</label>
-  <label><input type="radio" name="scenario" value="isl"> Immigration Salary List (ISL)</label>
-
-  <div class="info small">
-    Discounts can only be used where the applicant meets the full eligibility criteria.
-    This tool only models the salary maths and does not confirm legal eligibility.
-  </div>
+  <label><input type="radio" name="scenario" value="standard" checked> Standard</label>
+  <label><input type="radio" name="scenario" value="newEntrant"> New Entrant</label>
+  <label><input type="radio" name="scenario" value="phdNonStem"> PhD Non-STEM</label>
+  <label><input type="radio" name="scenario" value="phdStem"> PhD STEM</label>
+  <label><input type="radio" name="scenario" value="isl"> ISL</label>
 </div>
 
 <div class="panel">
-  <h2>4. Check salary</h2>
-
   <button id="checkBtn">Check salary</button>
   <div id="results"></div>
-
-  <div class="info small">
-    This calculator is indicative only. Always cross-check against the latest GOV.UK guidance.
-  </div>
 </div>
 
 <script>
-  const GENERAL_THRESHOLD   = 41700;
-  const FLOOR_NEW_ENTRANT   = 33400;
-  const FLOOR_PHD_NON_STEM  = 37500;
-  const HOURLY_MIN          = 17.13;
-  const WEEKS_PER_YEAR      = 52;
-  const MAX_HOURS_FOR_TEST  = 48;
+const GENERAL_THRESHOLD = 41700;
+const FLOOR_NEW_ENTRANT = 33400;
+const FLOOR_PHD_NON_STEM = 37500;
+const HOURLY_MIN = 17.13;
+const WEEKS_PER_YEAR = 52;
+const MAX_HOURS_FOR_TEST = 48;
 
-  let socData = [];
+let socData = [];
 
-  async function loadCSV() {
-    try {
-      const response = await fetch("2_soc_full_for_calculator.csv?nocache=" + Date.now());
-      const text = await response.text();
+function parseCSV(text) {
+  const rows = [];
+  let current = [], value = "", inQuotes = false;
 
-      const rows = text.trim().split("\n");
-      const headers = rows.shift().split(",");
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
 
-      socData = rows.map(row => {
-        const cols = row.split(",");
-        const obj = {};
-        headers.forEach((h, i) => obj[h.trim()] = cols[i]?.trim() || "");
-
-        if (!obj.Job_title && obj.Job_type) obj.Job_title = obj.Job_type;
-        if (!obj.Job_type && obj.Job_title) obj.Job_type = obj.Job_title;
-
-        return obj;
-      });
-
-      populateDropdown(socData);
-    } catch (err) {
-      console.error("CSV load failed:", err);
-      alert("CSV failed to load.");
+    if (char === '"' && text[i + 1] === '"') {
+      value += '"';
+      i++;
+    } else if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === "," && !inQuotes) {
+      current.push(value);
+      value = "";
+    } else if (char === "\n" && !inQuotes) {
+      current.push(value);
+      rows.push(current);
+      current = [];
+      value = "";
+    } else {
+      value += char;
     }
   }
+  current.push(value);
+  rows.push(current);
+  return rows;
+}
 
-  function populateDropdown(list) {
-    const select = document.getElementById("socSelect");
-    select.innerHTML = "";
+async function loadCSV() {
+  const URL = "https://sjamesseraphus.github.io/Salary-Threshold-Calculator/2_soc_full_for_calculator.csv?kill=" + Date.now();
+  document.getElementById("debug").textContent = "Fetching: " + URL;
 
-    list.forEach(r => {
-      const opt = document.createElement("option");
-      opt.value = r.SOC_code;
-      opt.textContent = `${r.SOC_code} — ${r.Job_title || "Unknown"}`;
-      select.appendChild(opt);
-    });
+  const res = await fetch(URL);
+  const text = await res.text();
 
-    updateJobInfo();
-  }
+  document.getElementById("debug").textContent =
+    "Loaded file successfully. First 100 chars: " + text.slice(0,100);
 
-  function updateJobInfo() {
-    const soc = document.getElementById("socSelect").value;
-    const role = socData.find(r => r.SOC_code === soc);
-    const infoDiv = document.getElementById("jobInfo");
+  const rows = parseCSV(text.trim());
+  const headers = rows.shift();
 
-    if (!role) return (infoDiv.textContent = "");
-
-    const standard = Number(role.Standard_going_rate_annual) || 0;
-    const lower    = Number(role.Lower_going_rate_annual) || 0;
-
-    infoDiv.textContent =
-      `Standard annual going rate: £${standard.toLocaleString()} ` +
-      (lower ? `(lower rate: £${lower.toLocaleString()})` : "");
-  }
-
-  document.getElementById("searchJob").addEventListener("input", function () {
-    const q = this.value.toLowerCase();
-    const filtered = socData.filter(r =>
-      (r.SOC_code || "").toLowerCase().includes(q) ||
-      (r.Job_title || "").toLowerCase().includes(q) ||
-      (r.Related_job_titles || "").toLowerCase().includes(q)
-    );
-    populateDropdown(filtered.length ? filtered : socData);
+  socData = rows.map(r => {
+    const obj = {};
+    headers.forEach((h,i) => obj[h.trim()] = r[i]?.trim() || "");
+    return obj;
   });
 
-  document.getElementById("socSelect").addEventListener("change", updateJobInfo);
+  populateDropdown(socData);
+}
 
-  document.getElementById("checkBtn").addEventListener("click", function () {
-    const soc = document.getElementById("socSelect").value;
-    const role = socData.find(r => r.SOC_code === soc);
-    const offered = Number(document.getElementById("salary").value);
-    const hours = Math.min(Number(document.getElementById("hours").value), MAX_HOURS_FOR_TEST);
-    const scenario = document.querySelector("input[name='scenario']:checked").value;
+function populateDropdown(list) {
+  const select = document.getElementById("socSelect");
+  select.innerHTML = "";
 
-    if (!role || !offered || !hours) return alert("Enter all values.");
-
-    const goingRate = Number(role.Standard_going_rate_annual) || 0;
-
-    let required = scenario === "standard" ? Math.max(GENERAL_THRESHOLD, goingRate)
-      : scenario === "newEntrant" ? Math.max(goingRate * 0.7, FLOOR_NEW_ENTRANT)
-      : scenario === "phdNonStem" ? Math.max(goingRate * 0.9, FLOOR_PHD_NON_STEM)
-      : scenario === "phdStem" ? Math.max(goingRate * 0.8, FLOOR_NEW_ENTRANT)
-      : Math.max(goingRate, FLOOR_NEW_ENTRANT);
-
-    const offeredHourly = offered / (hours * WEEKS_PER_YEAR);
-    const meetsHourly = offeredHourly >= HOURLY_MIN;
-
-    const results = document.getElementById("results");
-    results.innerHTML = "";
-
-    const div = document.createElement("div");
-    div.className = "result " + ((offered >= required && meetsHourly) ? "ok" : "fail");
-
-    div.innerHTML =
-      offered >= required && meetsHourly
-        ? `<strong>Meets salary rules.</strong><br>Required: £${required.toLocaleString()}<br>Offer: £${offered.toLocaleString()} (~£${offeredHourly.toFixed(2)}/hr)`
-        : `<strong>Does not meet salary rules.</strong>`;
-
-    results.appendChild(div);
+  list.forEach(r => {
+    const opt = document.createElement("option");
+    opt.value = r.SOC_code;
+    opt.textContent = `${r.SOC_code} — ${r.Job_title}`;
+    select.appendChild(opt);
   });
+}
 
-  loadCSV();
+loadCSV();
 </script>
 
 </body>
 </html>
-
