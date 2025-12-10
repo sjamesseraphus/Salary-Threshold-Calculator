@@ -22,6 +22,30 @@
   </style>
 </head>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skilled Worker SOC Code Salary Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    h1 { margin-bottom: .25rem; }
+    .panel { background:#fafafa; padding:1.25rem; border:1px solid #ddd; border-radius:8px; margin-bottom:1.75rem; }
+    label { font-weight:600; display:block; margin-top:.75rem; }
+    input, select { width:100%; max-width:420px; padding:.45rem; border:1px solid #bbb; border-radius:5px; }
+    button { margin-top:1rem; padding:.6rem 1.2rem; border:0; border-radius:6px; background:#004aad; color:#fff; font-weight:600; cursor:pointer; }
+    button:hover { background:#003a8f; }
+    .small { font-size:.9rem; color:#444; }
+    .info { background:#f1f5ff; padding:.6rem; border-left:4px solid #004aad; margin-top:.75rem; }
+    .error { color:#b00020; font-weight:600; margin-top:.5rem; }
+    .result { margin-top:1rem; padding:.75rem; border-radius:6px; }
+    .result.ok { background:#e6f5ea; border:1px solid #1b7f3a; }
+    .result.fail { background:#fdeaea; border:1px solid #b02a2a; }
+  </style>
+</head>
+
 <body>
 
 <h1>Skilled Worker SOC Code Salary Checker</h1>
@@ -31,24 +55,33 @@
 </p>
 
 <p class="small">
-  Salary discounts for New Entrants, PhD roles and the Immigration Salary List (ISL) apply only where all Home
-  Office eligibility criteria are fully met. This calculator assumes the role meets the Skilled Worker skill
-  level requirements and that only permitted guaranteed pay is counted.
+  Salary discounts for New Entrants and PhD roles apply only where all Home Office eligibility criteria are fully met.
+  This calculator assumes the role meets the Skilled Worker skill level requirements and that only permitted guaranteed
+  pay is counted.
 </p>
 
 <p class="small">
-  It does not assess sponsorship eligibility, job genuineness, qualification relevance, or full Immigration
-  Rules compliance.
+  This calculator does <strong>not</strong> assess Immigration Salary List (ISL) roles.
+  If a role may fall under the ISL, users must check the official ISL on GOV.UK to confirm
+  the correct salary requirement before making any decisions.
 </p>
 
 <p class="small">
-  Users must always verify occupation codes, related job titles and going rates against official Home Office
-  guidance on GOV.UK:
+  Salary thresholds shown here are <strong>pro-rated based on weekly working hours</strong>,
+  in line with Home Office methodology, and capped at a maximum of 48 hours per week.
+</p>
+
+<p class="small">
+  It does not assess sponsorship eligibility, job genuineness, qualification relevance, or full Immigration Rules compliance.
+</p>
+
+<p class="small">
+  Users must always verify occupation codes, related job titles and going rates against official Home Office guidance on GOV.UK:
 </p>
 
 <p class="small">
   <a href="https://www.gov.uk/government/publications/skilled-worker-visa-going-rates-for-eligible-occupations/skilled-worker-visa-going-rates-for-eligible-occupation-codes" target="_blank">
-    https://www.gov.uk/government/publications/skilled-worker-visa-going-rates-for-eligible-occupations/skilled-worker-visa-going-rates-for-eligible-occupation-codes
+    https://www.gov.uk/government/publications/skilled-worker-visa-going-rates-for-eligible-occupation-codes
   </a>
 </p>
 
@@ -101,7 +134,6 @@
   <label><input type="radio" name="scenario" value="newEntrant"> New entrant</label>
   <label><input type="radio" name="scenario" value="phdNonStem"> PhD non-STEM</label>
   <label><input type="radio" name="scenario" value="phdStem"> PhD STEM</label>
-  <label><input type="radio" name="scenario" value="isl"> Immigration Salary List</label>
 
   <div class="info small">
     Discounts apply only if full eligibility criteria are met.
@@ -123,10 +155,11 @@
   const HOURLY_MIN          = 17.13;
   const WEEKS_PER_YEAR      = 52;
   const MAX_HOURS_FOR_TEST  = 48;
+  const BASE_HOURS          = 37.5;
 
   let socData = [];
 
-  // ===== CSV PARSER (handles commas + quotes) =====
+  // ===== CSV PARSER =====
   function parseCSV(text) {
     const rows = [];
     let current = [], value = "", inQuotes = false;
@@ -151,6 +184,7 @@
         value += char;
       }
     }
+
     current.push(value);
     rows.push(current);
     return rows;
@@ -263,20 +297,36 @@
     }
 
     const hours = Math.min(hoursRaw, MAX_HOURS_FOR_TEST);
+    const hoursFactor = hours / BASE_HOURS;
+
     const scenario = document.querySelector("input[name='scenario']:checked").value;
     const goingRate = Number(role.Standard_going_rate_annual) || 0;
 
     let required = 0;
+
     if (scenario === "standard") {
-      required = Math.max(GENERAL_THRESHOLD, goingRate);
-    } else if (scenario === "newEntrant") {
-      required = Math.max(goingRate * 0.7, FLOOR_NEW_ENTRANT);
-    } else if (scenario === "phdNonStem") {
-      required = Math.max(goingRate * 0.9, FLOOR_PHD_NON_STEM);
-    } else if (scenario === "phdStem") {
-      required = Math.max(goingRate * 0.8, FLOOR_NEW_ENTRANT);
-    } else if (scenario === "isl") {
-      required = Math.max(goingRate, FLOOR_NEW_ENTRANT);
+      required = Math.max(
+        GENERAL_THRESHOLD * hoursFactor,
+        goingRate * hoursFactor
+      );
+    } 
+    else if (scenario === "newEntrant") {
+      required = Math.max(
+        goingRate * 0.7 * hoursFactor,
+        FLOOR_NEW_ENTRANT * hoursFactor
+      );
+    } 
+    else if (scenario === "phdNonStem") {
+      required = Math.max(
+        goingRate * 0.9 * hoursFactor,
+        FLOOR_PHD_NON_STEM * hoursFactor
+      );
+    } 
+    else if (scenario === "phdStem") {
+      required = Math.max(
+        goingRate * 0.8 * hoursFactor,
+        FLOOR_NEW_ENTRANT * hoursFactor
+      );
     }
 
     const offeredHourly = offered / (hours * WEEKS_PER_YEAR);
@@ -292,16 +342,18 @@
     if (passes) {
       div.innerHTML =
         `<strong>Likely to meet Skilled Worker salary rules (subject to full eligibility).</strong><br>
-         Required minimum for this scenario: £${required.toLocaleString()}<br>
+         Pro-rated required minimum for this role and hours: £${required.toLocaleString()}<br>
          Your offer: £${offered.toLocaleString()} (~£${offeredHourly.toFixed(2)}/hour).`;
-    } else {
+    } 
+    else {
       const reasons = [];
       if (offered < required) {
-        reasons.push(`Annual salary is below the required minimum of £${required.toLocaleString()}.`);
+        reasons.push(`Annual salary is below the pro-rated required minimum of £${required.toLocaleString()}.`);
       }
       if (!meetsHourly) {
         reasons.push(`Hourly rate (~£${offeredHourly.toFixed(2)}/hour) is below £${HOURLY_MIN.toFixed(2)}/hour.`);
       }
+
       div.innerHTML =
         `<strong>Does not meet Skilled Worker salary rules for this scenario.</strong><br>` +
         reasons.join(" ");
